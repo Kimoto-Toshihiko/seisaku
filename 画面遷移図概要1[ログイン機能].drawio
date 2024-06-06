@@ -1,0 +1,80 @@
+<mxfile host="65bd71144e">
+    <diagram id="cOPPHnaynSb4PC9Ppda5" name="ページ1">
+        <mxGraphModel dx="1489" dy="449" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="2" value="メニュー&lt;br&gt;　・&lt;u&gt;ログイン&lt;/u&gt;&lt;br&gt;　・&lt;u&gt;ユーザー登録&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="-715" y="40" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="3" value="ログイン&lt;br&gt;　ユーザーID&lt;br&gt;　パスワード&lt;br&gt;&lt;br&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="-715" y="265" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="4" value="XXXXXXX" style="text;html=1;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-635" y="303" width="80" height="21" as="geometry"/>
+                </mxCell>
+                <mxCell id="5" value="●●●●●●●●" style="text;html=1;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-635" y="321" width="80" height="21" as="geometry"/>
+                </mxCell>
+                <mxCell id="6" value="ログイン" style="text;html=1;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-635" y="350" width="80" height="21" as="geometry"/>
+                </mxCell>
+                <mxCell id="7" value="ログイン成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ(10問)へ&lt;br&gt;&lt;/u&gt;　&lt;u&gt;トップへ&lt;br&gt;&lt;/u&gt;&lt;u&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="-380" y="265" width="180" height="130" as="geometry"/>
+                </mxCell>
+                <mxCell id="8" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="7" target="2" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-503" y="240" as="sourcePoint"/>
+                        <mxPoint x="-453" y="190" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-293" y="105"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="9" value="「トップへ」をクリック" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-373" y="232" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="10" value="「ログイン」をクリック" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-641" y="203" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="11" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="2" target="3" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-503" y="220" as="sourcePoint"/>
+                        <mxPoint x="-453" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="12" value="「ログイン」をクリック&lt;br&gt;（ログイン成功）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-543" y="338" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="13" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="3" target="7" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-503" y="220" as="sourcePoint"/>
+                        <mxPoint x="-453" y="170" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="14" value="トップ画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-712" y="10" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="15" value="ログイン画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-702" y="394" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="16" value="ログイン成功画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-364" y="394" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="17" value="「ログイン」をクリック&lt;br&gt;（ログイン失敗）" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-816" y="397" width="160" height="30" as="geometry"/>
+                </mxCell>
+                <mxCell id="18" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-715" y="376" as="sourcePoint"/>
+                        <mxPoint x="-713" y="346" as="targetPoint"/>
+                        <Array as="points">
+                            <mxPoint x="-753" y="376"/>
+                            <mxPoint x="-753" y="346"/>
+                        </Array>
+                    </mxGeometry>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
