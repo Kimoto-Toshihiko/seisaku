@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="cOPPHnaynSb4PC9Ppda5" name="ページ1">
-        <mxGraphModel dx="1489" dy="1618" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1659" dy="1644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -102,10 +102,10 @@
                         </Array>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="37" value="UserEntryServlet" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="37" value="UsersEntryServlet" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-597" y="-939" width="120" height="31" as="geometry"/>
                 </mxCell>
-                <mxCell id="38" value="userEntry.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="38" value="usersEntry.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-597" y="-864" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="40" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="37" target="38" edge="1">
@@ -132,7 +132,7 @@
                 <mxCell id="47" value="GET" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-498" y="-960" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="48" value="UserEntryServlet" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="48" value="UsersEntryServlet" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-261" y="-940" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="49" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="48" target="51" edge="1">
@@ -141,7 +141,7 @@
                         <mxPoint x="-191" y="-868" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="51" value="userEntryCheck.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="51" value="usersEntryCheck.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-261" y="-865" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="52" value="レスポンス" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -187,7 +187,7 @@
                         <mxPoint x="-196" y="-753" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="64" value="userEntryOK.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="64" value="usersEntryOK.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-262" y="-525" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="65" value="" style="endArrow=classic;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="26" target="64" edge="1">
@@ -280,7 +280,7 @@
                 <mxCell id="86" value="ユーザー登録失敗画面" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-293" y="-1158" width="160" height="30" as="geometry"/>
                 </mxCell>
-                <mxCell id="87" value="userEntryNG.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="87" value="usersEntryNG.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-261" y="-989" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="88" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=0.5;entryY=1;entryDx=0;entryDy=0;" parent="1" source="48" target="87" edge="1">
@@ -295,10 +295,10 @@
                         <mxPoint x="-270" y="-910" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="90" value="レスポンス" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="90" value="レスポンス" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-201" y="-1005" width="70" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="91" value="フォワード" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+                <mxCell id="91" value="フォワード" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-199" y="-958" width="70" height="20" as="geometry"/>
                 </mxCell>
             </root>
