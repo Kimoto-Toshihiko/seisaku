@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="cOPPHnaynSb4PC9Ppda5" name="ページ1">
-        <mxGraphModel dx="1489" dy="449" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1403" dy="475" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -19,7 +19,7 @@
                 <mxCell id="6" value="確認" style="text;html=1;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-591" y="394" width="48" height="21" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="ユーザー登録成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ(10問)へ&lt;/u&gt;&lt;br&gt;　&lt;u&gt;トップへ&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                <mxCell id="7" value="ユーザー登録成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ&lt;/u&gt;&lt;br&gt;　&lt;u&gt;トップへ&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="-380" y="41" width="180" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="" style="endArrow=classic;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="7" target="2" edge="1">

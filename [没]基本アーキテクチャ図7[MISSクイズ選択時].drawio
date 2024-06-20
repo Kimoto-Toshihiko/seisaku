@@ -1,14 +1,14 @@
 <mxfile host="65bd71144e">
     <diagram id="cOPPHnaynSb4PC9Ppda5" name="ページ1">
-        <mxGraphModel dx="1403" dy="1644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1403" dy="2813" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="155" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontColor=#080808;" parent="1" vertex="1">
-                    <mxGeometry x="103" y="-1078" width="133" height="135" as="geometry"/>
+                    <mxGeometry x="103" y="-1151" width="133" height="135" as="geometry"/>
                 </mxCell>
                 <mxCell id="91" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontColor=#080808;" parent="1" vertex="1">
-                    <mxGeometry x="-37" y="-1078" width="133" height="135" as="geometry"/>
+                    <mxGeometry x="-37" y="-1151" width="133" height="135" as="geometry"/>
                 </mxCell>
                 <mxCell id="150" style="edgeStyle=none;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" parent="1" target="138" edge="1">
                     <mxGeometry relative="1" as="geometry">
@@ -71,7 +71,7 @@
                         <mxPoint x="-610" y="-1005" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="60" value="QuizControlServlet&lt;br&gt;doGet()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="60" value="QuizControlServlet&lt;br&gt;doPost()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-610" y="-1025" width="110" height="40" as="geometry"/>
                 </mxCell>
                 <mxCell id="62" value="Servlet" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
@@ -92,8 +92,11 @@
                 <mxCell id="66" value="BO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-379" y="-1043" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="67" value="QuizDAO&lt;br&gt;findSelect()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-188" y="-1047" width="110" height="40" as="geometry"/>
+                <mxCell id="67" value="UserQuizMissOnlyDAO&lt;br&gt;findByAllQuiz()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="-220" y="-1024" width="142" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="68" value="DAO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
+                    <mxGeometry x="-161" y="-1043" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="69" value="Select" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-473" y="-1031" width="60" height="20" as="geometry"/>
@@ -107,28 +110,31 @@
                 <mxCell id="71" value="true" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-472" y="-995" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="72" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="65" edge="1">
+                <mxCell id="72" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="65" target="67" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-294" y="-1015" as="sourcePoint"/>
-                        <mxPoint x="-190" y="-1014" as="targetPoint"/>
+                        <mxPoint x="-200" y="-1014" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="73" value="Select" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
-                    <mxGeometry x="-276" y="-1032" width="60" height="20" as="geometry"/>
+                    <mxGeometry x="-287" y="-1031" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="74" value="" style="endArrow=classic;html=1;fontColor=#050505;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="89" target="65" edge="1">
+                <mxCell id="74" value="" style="endArrow=classic;html=1;fontColor=#050505;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="67" target="65" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-200" y="-994" as="sourcePoint"/>
                         <mxPoint x="-294" y="-995" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
+                <mxCell id="75" value="AllQuiz" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
+                    <mxGeometry x="-286" y="-995" width="60" height="20" as="geometry"/>
+                </mxCell>
                 <mxCell id="76" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=15;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="687" y="-810" width="140" height="130" as="geometry"/>
                 </mxCell>
-                <mxCell id="80" value="" style="endArrow=classic;startArrow=classic;html=1;fontColor=#ffffff;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="63" target="77" edge="1">
+                <mxCell id="80" value="" style="endArrow=classic;startArrow=classic;html=1;fontColor=#ffffff;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=0;exitY=0;exitDx=0;exitDy=0;" parent="1" source="88" target="77" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-60" y="-1007" as="sourcePoint"/>
-                        <mxPoint x="-160" y="-985" as="targetPoint"/>
+                        <mxPoint x="-80" y="-1007" as="sourcePoint"/>
+                        <mxPoint x="-160" y="-1057" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="82" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdeb8b;strokeColor=#36393d;" parent="1" vertex="1">
@@ -153,13 +159,13 @@
                     <mxGeometry x="-301" y="-1031" width="30" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="88" value="&lt;font color=&quot;#080808&quot;&gt;⑥&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="-82" y="-995" width="30" height="20" as="geometry"/>
+                    <mxGeometry x="-82" y="-1026" width="30" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="89" value="&lt;font color=&quot;#080808&quot;&gt;⑦&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="-214" y="-994" width="30" height="20" as="geometry"/>
+                    <mxGeometry x="-242" y="-994" width="30" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="77" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;QUIZ&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;テーブル&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=12;align=center;fillColor=#cce5ff;strokeColor=#000000;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="-24" y="-1049" width="110" height="90" as="geometry"/>
+                    <mxGeometry x="-24" y="-1122" width="110" height="90" as="geometry"/>
                 </mxCell>
                 <mxCell id="92" value="&lt;font color=&quot;#080808&quot;&gt;⑧&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="-430" y="-994" width="30" height="20" as="geometry"/>
@@ -209,8 +215,8 @@
                         <mxPoint x="-750" y="-406" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="106" value="QUIZとANSWER&lt;br&gt;をセットでselect" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
-                    <mxGeometry x="-151" y="-957" width="117" height="30" as="geometry"/>
+                <mxCell id="106" value="USER_QUIZ の&lt;br&gt;MISS分に一致する&lt;br&gt;全てのQUIZとANSWER&lt;br&gt;を全てselect" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="-160" y="-958" width="117" height="78" as="geometry"/>
                 </mxCell>
                 <mxCell id="108" value="Servlet" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-583" y="-748" width="60" height="20" as="geometry"/>
@@ -231,7 +237,10 @@
                     <mxGeometry x="-379" y="-747" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="113" value="UserQuizDAO&lt;br&gt;insertByJudge()" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-                    <mxGeometry x="-188" y="-751" width="110" height="40" as="geometry"/>
+                    <mxGeometry x="-188" y="-728" width="110" height="40" as="geometry"/>
+                </mxCell>
+                <mxCell id="114" value="DAO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
+                    <mxGeometry x="-161" y="-747" width="60" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="115" value="Input" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-473" y="-735" width="60" height="20" as="geometry"/>
@@ -245,20 +254,23 @@
                 <mxCell id="117" value="true" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-472" y="-699" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="118" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="111" edge="1">
+                <mxCell id="118" value="" style="endArrow=classic;html=1;entryX=0;entryY=0.25;entryDx=0;entryDy=0;exitX=1;exitY=0.25;exitDx=0;exitDy=0;" parent="1" source="111" target="113" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-294" y="-719" as="sourcePoint"/>
-                        <mxPoint x="-190" y="-718" as="targetPoint"/>
+                        <mxPoint x="-200" y="-718" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="119" value="Judge" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
                     <mxGeometry x="-267" y="-735" width="60" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="120" value="" style="endArrow=classic;html=1;fontColor=#050505;exitX=0.75;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="128" target="111" edge="1">
+                <mxCell id="120" value="" style="endArrow=classic;html=1;fontColor=#050505;exitX=0;exitY=0.75;exitDx=0;exitDy=0;entryX=1;entryY=0.75;entryDx=0;entryDy=0;" parent="1" source="113" target="111" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
                         <mxPoint x="-200" y="-698" as="sourcePoint"/>
                         <mxPoint x="-294" y="-699" as="targetPoint"/>
                     </mxGeometry>
+                </mxCell>
+                <mxCell id="121" value="UserQuiz&lt;br&gt;UserAnswer" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
+                    <mxGeometry x="-280" y="-697" width="74" height="29" as="geometry"/>
                 </mxCell>
                 <mxCell id="125" value="②" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#0d0c0c;" parent="1" vertex="1">
                     <mxGeometry x="-509" y="-736" width="30" height="20" as="geometry"/>
@@ -267,7 +279,7 @@
                     <mxGeometry x="-301" y="-735" width="30" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="127" value="&lt;font color=&quot;#080808&quot;&gt;⑫&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
-                    <mxGeometry x="-82" y="-727" width="30" height="20" as="geometry"/>
+                    <mxGeometry x="-82" y="-729" width="30" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="128" value="&lt;font color=&quot;#080808&quot;&gt;⑬&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="-214" y="-698" width="30" height="20" as="geometry"/>
@@ -331,7 +343,25 @@
                     <mxGeometry x="-640" y="-779" width="67" height="20" as="geometry"/>
                 </mxCell>
                 <mxCell id="154" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;ANSWER&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;テーブル&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=12;align=center;fillColor=#cce5ff;strokeColor=#000000;fontColor=#000000;" parent="1" vertex="1">
-                    <mxGeometry x="116" y="-1049" width="110" height="90" as="geometry"/>
+                    <mxGeometry x="116" y="-1122" width="110" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="158" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontColor=#080808;" parent="1" vertex="1">
+                    <mxGeometry x="103" y="-1003" width="133" height="135" as="geometry"/>
+                </mxCell>
+                <mxCell id="159" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontColor=#080808;" parent="1" vertex="1">
+                    <mxGeometry x="-37" y="-1003" width="133" height="135" as="geometry"/>
+                </mxCell>
+                <mxCell id="160" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;USER_QUIZ&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;テーブル&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=12;align=center;fillColor=#cce5ff;strokeColor=#000000;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="-24" y="-974" width="110" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="161" value="&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;&lt;br&gt;&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;USER_ANSWER&lt;/span&gt;&lt;/div&gt;&lt;div style=&quot;&quot;&gt;&lt;span style=&quot;background-color: initial;&quot;&gt;テーブル&lt;/span&gt;&lt;br&gt;&lt;/div&gt;" style="swimlane;whiteSpace=wrap;html=1;startSize=12;align=center;fillColor=#cce5ff;strokeColor=#000000;fontColor=#000000;" parent="1" vertex="1">
+                    <mxGeometry x="116" y="-974" width="110" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="162" value="" style="endArrow=classic;startArrow=classic;html=1;fontColor=#ffffff;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" target="160" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="-80" y="-987" as="sourcePoint"/>
+                        <mxPoint x="-14" y="-1047" as="targetPoint"/>
+                    </mxGeometry>
                 </mxCell>
                 <mxCell id="169" value="" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fontColor=#080808;" parent="1" vertex="1">
                     <mxGeometry x="103" y="-782" width="133" height="135" as="geometry"/>
@@ -347,8 +377,8 @@
                 </mxCell>
                 <mxCell id="173" value="" style="endArrow=classic;startArrow=classic;html=1;fontColor=#ffffff;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="109" target="171" edge="1">
                     <mxGeometry width="50" height="50" relative="1" as="geometry">
-                        <mxPoint x="-59.18599999999992" y="-708.99" as="sourcePoint"/>
-                        <mxPoint x="-14" y="-756" as="targetPoint"/>
+                        <mxPoint x="-60" y="-738" as="sourcePoint"/>
+                        <mxPoint x="-14" y="-777" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
                 <mxCell id="174" value="" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#cdeb8b;strokeColor=#36393d;" parent="1" vertex="1">
@@ -378,7 +408,7 @@
                 <mxCell id="181" value="&lt;font color=&quot;#080808&quot;&gt;④&lt;/font&gt;" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#ffffff;" parent="1" vertex="1">
                     <mxGeometry x="-509" y="-1032" width="30" height="20" as="geometry"/>
                 </mxCell>
-                <mxCell id="182" value="userId=入力値&lt;br&gt;quizSelect=All" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                <mxCell id="182" value="userId=入力値&lt;br&gt;quizSelect=Miss" style="rounded=1;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="-789" y="-793" width="112" height="38" as="geometry"/>
                 </mxCell>
                 <mxCell id="183" value="POST" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
@@ -386,18 +416,6 @@
                 </mxCell>
                 <mxCell id="184" value="&#10;&#10;&#10;&#10;［フィールド］&#10;・String userId&#10;・String quizSelect" style="swimlane;startSize=0;fontColor=#000000;align=left;" parent="1" vertex="1">
                     <mxGeometry x="-454" y="-814" width="124" height="59" as="geometry"/>
-                </mxCell>
-                <mxCell id="185" value="AnswerDAO&lt;br&gt;findSelect()" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="-188" y="-1001" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="68" value="DAO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
-                    <mxGeometry x="-163" y="-1013" width="60" height="20" as="geometry"/>
-                </mxCell>
-                <mxCell id="186" value="UserAnswerDAO&lt;br&gt;insertByJudge()" style="rounded=1;whiteSpace=wrap;html=1;" vertex="1" parent="1">
-                    <mxGeometry x="-188" y="-705" width="110" height="40" as="geometry"/>
-                </mxCell>
-                <mxCell id="114" value="DAO" style="text;html=1;strokeColor=none;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;fontColor=#050505;" parent="1" vertex="1">
-                    <mxGeometry x="-161" y="-717" width="60" height="20" as="geometry"/>
                 </mxCell>
             </root>
         </mxGraphModel>

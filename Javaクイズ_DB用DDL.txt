@@ -1,0 +1,2103 @@
+DROP TABLE USERS;
+
+CREATE TABLE USERS (
+  USER_ID    VARCHAR(12)   PRIMARY KEY,
+  PASS       VARCHAR(12)   NOT NULL,
+  NAME_KANJI VARCHAR(30)   NOT NULL,
+  NAME_KANA  VARCHAR(30)   NOT NULL,
+  SEX        CHAR(1)       NOT NULL,
+  MAIL       VARCHAR(100)  NOT NULL,
+  TEL        VARCHAR(15)   NOT NULL 
+);
+
+INSERT INTO USERS ( USER_ID,PASS,NAME_KANJI,NAME_KANA,SEX,MAIL,TEL ) VALUES ( 'c036803','c036803','〇〇　〇〇','〇〇〇　〇〇〇〇','M','xxxx@mail.jp','123-456-7890' );
+
+DROP TABLE USER_QUIZ;
+
+CREATE TABLE USER_QUIZ (
+  USER_ID		VARCHAR(12),
+  QUIZ_CHAPTER_ID	INTEGER,
+  QUIZ_ID		INTEGER,  PRIMARY KEY(USER_ID,QUIZ_CHAPTER_ID,QUIZ_ID),
+  QUIZ_FLG		CHAR(1)   NOT NULL,
+  ANSWERED_TIMES	INTEGER   NOT NULL,
+  ANSWERED_DATE		DATE 
+);
+
+DROP TABLE USER_ANSWER;
+
+CREATE TABLE USER_ANSWER (
+  USER_ID		VARCHAR(12),
+  QUIZ_CHAPTER_ID	INTEGER,
+  QUIZ_ID		INTEGER,
+  ANSWER_ID		INTEGER,  PRIMARY KEY(USER_ID,QUIZ_CHAPTER_ID,QUIZ_ID,ANSWER_ID),
+  ANSWERED_FLG		CHAR(1)   NOT NULL,
+  JUDGE_FLG		CHAR(1)   NOT NULL 
+);
+
+DROP TABLE USER_GRADE;
+
+CREATE TABLE USER_GRADE (
+  USER_ID		VARCHAR(12),
+  GRADE_ID		INTEGER GENERATED ALWAYS AS IDENTITY ,PRIMARY KEY(USER_ID,GRADE_ID),
+  ANSWERED_DATE		DATE,
+  ANSWERED_GRADE	INTEGER 
+);
+
+DROP TABLE QUIZ;
+
+CREATE TABLE QUIZ (
+  QUIZ_CHAPTER_ID    	INTEGER,
+  QUIZ_ID       	INTEGER, PRIMARY KEY(QUIZ_CHAPTER_ID,QUIZ_ID),
+  QUIZ 			VARCHAR(1000)   NOT NULL,
+  ANSWER_NUM		INTEGER   NOT NULL,
+  CORR_ANSWER_NUM	INTEGER   NOT NULL 
+);
+
+INSERT INTO QUIZ VALUES (1,1,'Javaに関する説明として、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (1,2,'Javaに関する説明として、正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (1,3,'Javaに関する説明として、正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (1,4,'Javaプログラムの作成から実行までの流れに関する説明として、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (1,5,'Javaのクラスファイルに関する説明として、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (1,6,'Javaに関する説明として、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (1,7,'アプリケーションのエントリーポイントとなるメソッドの条件として、正しいものを選びなさい。(3つ選択)',6,3);
+INSERT INTO QUIZ VALUES (1,8,'Javaのソースファイルに関する説明として、正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (1,9,'JavaのエディションのうちJava SEに関する説明として、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (1,10,'JavaのエディションのうちJava EEに関する説明として、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (1,11,'JavaのエディションのうちJava MEに関する説明として、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (2,1,'プリミティブ型として正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (2,2,'参照型として正しいものを選びなさい。(3つ選択)',5,3);
+INSERT INTO QUIZ VALUES (2,3,'整数値を代入できる型として正しいものを選びなさい。(3つ選択)',5,3);
+INSERT INTO QUIZ VALUES (2,4,'真偽値を保持できる型として正しいものを選びなさい。(1つ選択)',5,1);
+INSERT INTO QUIZ VALUES (2,5,'プリミティブ型および参照型変数の説明として正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (2,6,'変数の宣言方法として正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (2,7,'数値を扱う変数の宣言と初期化方法として正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (2,8,'真偽値を扱う変数の宣言と初期化方法として正しいものを選びなさい。(1つ選択)',5,1);
+INSERT INTO QUIZ VALUES (2,9,'文字を扱う変数の宣言と初期化方法として正しいものを選びなさい。(3つ選択)',5,3);
+INSERT INTO QUIZ VALUES (2,10,'次のコードのうち、コンパイルエラーにならないものを選びなさい。(3つ選択)',5,3);
+INSERT INTO QUIZ VALUES (2,11,'変数の宣言方法として正しいものを選びなさい。(2つ選択)',6,2);
+INSERT INTO QUIZ VALUES (2,12,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　final String COLOR = "blue";<br>
+4.　　　　　// other code<br>
+5.　　　　　COLOR = "red";<br>
+6.　　　　　System.out.println(COLOR);<br>
+7.　　　}<br>
+8.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (2,13,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　char a = "A"; b = "B";<br>
+4.　　　　　System.out.print(a);<br>
+5.　　　　　System.out.print(b);<br>
+6.　　　}<br>
+7.　}<br>',5,1);
+UPDATE QUIZ SET QUIZ = REPLACE(QUIZ, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 13;
+INSERT INTO QUIZ VALUES (2,14,'次のプログラムの2行目に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Document {<br>
+2.　　　// insert code here<br>
+3.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (2,15,'次のプログラムの2行目に挿入するコードとして、正しいものを選びなさい。(2つ選択)<br>
+<br>
+1.　public class Item [<br>
+2.　　　// insert code here<br>
+3.　}<br>',4,2);
+INSERT INTO QUIZ VALUES (2,16,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 3;<br>
+4.　　　　　for (int i = 0; i < 3; i++) {<br>
+5.　　　　　　　int total = 0;<br>
+6.　　　　　　　total += a;<br>
+7.　　　　　}<br>
+8.　　　　　System.out.print(total);<br>
+9.　　　}<br>
+10. } <br>',5,1);
+INSERT INTO QUIZ VALUES (2,17,'配列の宣言・生成方法として正しいものを選びなさい。(1つ選択)',5,1);
+INSERT INTO QUIZ VALUES (2,18,'配列の初期化の記述として正しいものを選びなさい。(1つ選択)',5,1);
+INSERT INTO QUIZ VALUES (2,19,'配列の変数名をarrayとした場合、配列の長さを参照する方法として正しいものを選びなさい。(1つ選択)',5,1);
+INSERT INTO QUIZ VALUES (2,20,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int[] array = {3, 7, 5};<br>
+4.　　　　　System.out.println(array[1]);<br>
+5.　　　}<br>
+6.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (2,21,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int [] array = {1, 0, 2, 3};<br>
+4.　　　　　System.out.println(array[4]);<br>
+5.　　　}<br>
+6.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (2,22,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int[] array = new int[3];<br>
+4.　　　　　array[0] = 3.5;<br>
+5.　　　　　System.out.println(array[0]);<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (2,23,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int[] array1 = {3, 8, 4};<br>
+4.　　　　　int[] array2 = array1;<br>
+5.　　　　　System.out.println(array2[0]);<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (2,24,'次のプログラムを実行したときに表示結果のとおりになるようにしたい。実行するコマンドとして正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(args[0]);<br>
+4.　　　　　System.out.println(args[1]);<br>
+5.　　　}<br>
+6.　}<br>
+<br>
+【表示結果】<br>
+Hello<br>
+World<br>',4,1);
+INSERT INTO QUIZ VALUES (2,25,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(args[0]);<br>
+4.　　　}<br>
+5.　}<br>
+<br>
+【実行方法】<br>
+java Main<br>',4,1);
+INSERT INTO QUIZ VALUES (3,1,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(5 / 2);<br>
+4.　　　}<br>
+5.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,2,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(2 * 3.0);<br>
+4.　　　}<br>
+5.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,3,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(10 % 3);<br>
+4.　　　}<br>
+5.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,4,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 2;<br>
+4.　　　　　i *= 3;<br>
+5.　　　　　System.out.println(i);<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,5,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 1;<br>
+4.　　　　　i--;<br>
+5.　　　　　System.out.println(i);<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,6,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(10 + "5");<br>
+4.　　　}<br>
+5.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,7,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.our.println(2 * 3 + 4 / 2);<br>
+4.　　　}<br>
+5.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (3,8,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println((7 + 2) * 2 / (2 - 6));<br>
+4.　　 　}<br>
+5.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (3,9,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(5 + 10 + "5");<br>
+4.　　　}<br>
+5.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (3,10,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 2;<br>
+4.　　　　　int b = 5;<br>
+5.　　　　　System.out.println(++a + b--);<br>
+6.　　　}<br>
+7.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (3,11,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 0;<br>
+4.　　　　　if(a = 0)<br>
+5.　　　　　　　System.out.print("A");<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (3,12,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　if(false)<br>
+4.　　　　　　　System.our.print("A");<br>
+5.　　　　　　　System.out.print("B");<br>
+6.　　　　　　　System.out.print("C");<br>
+7.　　　}<br>
+8.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (3,13,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main (String[] args) {<br>
+3.　　　　　int a = 0;<br>
+4.　　　　　if(a == 1) {<br>
+5.　　　　　　　System.out.print("A");<br>
+6.　　　　　} else {<br>
+7.　　　　　　　System.out.print("B");<br>
+8.　　　　　}<br>
+9.　　　　　System.out.print("C");<br>
+10.　　}<br>
+11. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,14,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Foo {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　String str1 = "sample";<br>
+4.　　　　　String str2 = "sample";<br>
+5.　　　　　if(str1 == str2) {<br>
+6.　　　　　　　System.out.print("same");<br>
+7.　　　　　} else {<br>
+8.　　　　　　　System.out.print("different");<br>
+9.　　　　　}<br>
+10.　　}<br>
+11. }<br>',4,1);
+INSERT INTO QUIZ VALUES (3,15,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 80;<br>
+4.　　　　　if(a < 50) {<br>
+5.　　　　　　　System.out.print("A");<br>
+6.　　　　　} else if(a < 70) {<br>
+7.　　　　　　　System.out.print("B");<br>
+8.　　　　　} else {<br>
+9.　　　　　　　System.out.print("C");<br>
+10.　　　　}<br>
+11.　　}<br>
+12. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,16,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 80;<br>
+4.　　　　　int b = 60;<br>
+5.　　　　　if(a >= 80  && b >= 80) {<br>
+6.　　　　　　　System.out.print("A");<br>
+7.　　　　　} else if(a >= 80 || b >= 80) {<br>
+8.　　　　　　　System.out.print("B");<br>
+9.　　　　　} else {<br>
+10.　　　　　　System.out.print("C");<br>
+11.　　　　}<br>
+12.　　}<br>
+13. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,17,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 0;<br>
+4.　　　　　int b = 0;<br>
+5.　　　　　if(++a > 0 || ++b > 0) {<br>
+6.　　　　　　　System.out.print("a=" +  a);<br>
+7.　　　　　　　System.out.print(",b=" + b);<br>
+8.　　　　　}<br>
+9.　　　}<br>
+10. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,18,'次のプログラムの5行目、8行目に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 1;<br>
+4.　　　　　switch (a) {<br>
+5.　　　　　　　// insert code here<br>
+6.　　　　　　　　　System.out.println("A");<br>
+7.　　　　　　　　　break;<br>
+8.　　　　　　　// insert code here<br>
+9.　　　　　　　　　System.out.println("B");<br>
+10.　　　　　　　　break;<br>
+11.　　　　　}<br>
+12.　　}<br>
+13. }<br>',4,1);
+INSERT INTO QUIZ VALUES (3,19,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　double b = 1.5;<br>
+4.　　　　　switch (b) {<br>
+5.　　　　　　　case 1.0:<br>
+6.　　　　　　　　　System.out.print("A");<br>
+7.　　　　　　　　　break;<br>
+8.　　　　　　　case 1.5:<br>
+9.　　　　　　　　　System.out.print("B");<br>
+10.　　　　　　　　break;<br>
+11.　　　　　　case 2.0:<br>
+12.　　　　　　　　System.out.print("C");<br>
+13.　　　　　　　　break;<br>
+14.　　　　}<br>
+15.　　}<br>
+16. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,20,'次のプログラムを実行し、「Z」が表示されるようにしたい。9行目に挿入するコードとして正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　　char c = "e";<br>
+4.　　　　　　switch (c) {<br>
+5.　　　　　　　　case "a" :<br>
+6.　　　　　　　　　　System.out.print("A");<br>
+7.　　　　　　　　case "b":<br>
+8.　　　　　　　　　　System.out.print("B");<br>
+9.　　　　　　　　// insert code here<br>
+10.　　　　　　　　　System.out.print("Z");<br>
+11.　　　　　}<br>
+12.　　}<br>
+13. }<br>',4,1);
+UPDATE QUIZ SET QUIZ = REPLACE(QUIZ, '"e"','''e''') WHERE QUIZ_CHAPTER_ID = 3 AND QUIZ_ID = 20;
+UPDATE QUIZ SET QUIZ = REPLACE(QUIZ, '"a"','''a''') WHERE QUIZ_CHAPTER_ID = 3 AND QUIZ_ID = 20;
+UPDATE QUIZ SET QUIZ = REPLACE(QUIZ, '"b"','''b''') WHERE QUIZ_CHAPTER_ID = 3 AND QUIZ_ID = 20;
+INSERT INTO QUIZ VALUES (3,21,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 1;<br>
+4.　　　　　switch (a) {<br>
+5.　　　　　　　case 1:<br>
+6.　　　　　　　　　System.out.print("A");<br>
+7.　　　　　　　case 2:<br>
+8.　　　　　　　　　System.out.print("B");<br>
+9.　　　　　　　　　break;<br>
+10.　　　　　　case 3:<br>
+11.　　　　　　　　System out.print("C");<br>
+12.　　　　　　　　break;<br>
+13.　　　　}<br>
+14.　　}<br>
+15. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,22,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　　String name = "cd";<br>
+4.　　　　　　switch (name) {<br>
+5.　　　　　　　　case "book":<br>
+6.　　　　　　　　　　System.out.print("本");<br>
+7.　　　　　　　　　　break;<br>
+8.　　　　　　　　case "game":<br>
+9.　　　　　　　　　　System.out.print("ゲーム");<br>
+10.　　　　　　　　　break;<br>
+11.　　　　　　　default:<br>
+12.　　　　　　　　　System.out.print("その他");<br>
+13.　　　　　}<br>
+14.　　　}<br>
+15. }<br>',5,1);
+INSERT INTO QUIZ VALUES (3,23,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int a = 1;<br>
+4.　　　　　switch (a) {<br>
+5.　　　　　　　case 1:<br>
+6.　　　　　　　　　System.out.print("A");<br>
+7.　　　　　　　case 2:<br>
+8.　　　　　　　　　System.out.print("B");<br>
+9.　　　　　　　default:<br>
+10.　　　　　　　　System.out.print("C");<br>
+11.　　　　}<br>
+12.　　}<br>
+13. }<br>',5,1);
+INSERT INTO QUIZ VALUES (4,1,'次のプログラムの空欄に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 0;<br>
+4.　　　　　while (□) {<br>
+5.　　　　　　　System.out.println("LOOP.");<br>
+6.　　　　　　　i++;<br>
+7.　　　　　}<br>
+8.　　　}<br>
+9.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (4,2,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 0;<br>
+4.　　　　　while (i < 5) {<br>
+5.　　　　　　　i++;<br>
+6.　　　　　}<br>
+7.　　　　　System.out.println(i);<br>
+8.　　　}<br>
+9.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,3,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 1;<br>
+4.　　　　　int j = 2;<br>
+5.　　　　　while (i < 10) {<br>
+6.　　　　　　　i = j * i;<br>
+7.　　　　　}<br>
+8.　　　　　System.out.println("i=" + i + ", j=" + j);<br>
+9.　　　}<br>
+10. }<br>',5,1);
+INSERT INTO QUIZ VALUES (4,4,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 1;<br>
+4.　　　　　int j = 10;<br>
+5.　　　　　while (i < j) {<br>
+6.　　　　　　　System.out.println("LOOP");<br>
+7.　　　　　　　i *= 2;<br>
+8.　　　　　　　j /= 2;<br>
+9.　　　　　}<br>
+10.　　}<br>
+11. }<br>',6,1);
+INSERT INTO QUIZ VALUES (4,5,'次のプログラムの空欄に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (□) {<br>
+4.　　　　　　　System.out.println("LOOP");<br>
+5.　　　　　}<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (4,6,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for(int i = 0; ; i++) {<br>
+4.　　　　　　　System.out.println("LOOP");<br>
+5.　　　　　}<br>
+6.　　　}<br>
+7.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,7,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0; i < 3; i++) {<br>
+4.　　　　　　　System.out.print(i + " ");<br>
+5.　　　　　}<br>
+6.　　　}<br>
+7.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,8,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0: i <= 6; i += 2) {<br>
+4.　　　　　　　System.out.println("LOOP");<br>
+5.　　　　　}<br>
+6.　　　}<br>
+7.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,9,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0; i > 3; i++) {<br>
+4.　　　　　　　System.out.print(i + " ");<br>
+5.　　　　　}<br>
+6.　　　}<br>
+7.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,10,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0; i < 5; i++) {<br>
+4.　　　　　　　if(i < 3) {<br>
+5.　　　　　　　　　continue;<br>
+6.　　　　　　　}<br>
+7.　　　　　　　System.out.println("LOOP");<br>
+8.　　　　　}<br>
+9.　　　}<br>
+10. }<br>',6,1);
+INSERT INTO QUIZ VALUES (4,11,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 0;<br>
+4.　　　　　while (true) {<br>
+5.　　　　　　　System.out.println("LOOP");<br>
+6.　　　　　　　i++;<br>
+7.　　　　　　　if(i >= 5) {<br>
+8.　　　　　　　　　break;<br>
+9.　　　　　　　}<br>
+10.　　　　}<br>
+11.　　}<br>
+12. }<br>',5,1);
+INSERT INTO QUIZ VALUES (4,12,'次のプログラムの空欄に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int[] array = {0, 2, 4, 6};<br>
+4.　　　　　for (□) {<br>
+5.　　　　　　　System.out.print(e + " ");<br>
+6.　　　　　}<br>
+7.　　　}<br>
+8.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (4,13,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　String[] array = {"A", "B", "C"};<br>
+4.　　　　　for (String e : array) {<br>
+5.　　　　　　　System.out.print(e + " ");<br>
+6.　　　　　}<br>
+7.　　　}<br>
+8.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,14,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 0;<br>
+4.　　　　　do (i < 3) {<br>
+5.　　　　　　　System.out.print(i + " ");<br>
+6.　　　　　　　i++;<br>
+7.　　　　　} while;<br>
+8.　　　}<br>
+9.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,15,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 0;<br>
+4.　　　　　do {<br>
+5.　　　　　　　System.out.print("LOOP");<br>
+6.　　　　　　　i++;<br>
+7.　　　　　} while (i > 3);<br>
+8.　　　}<br>
+9.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (4,16,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0; i < 2; i++) {<br>
+4.　　　　　　　for (int j = 0; j <= 2; j++) {<br>
+5.　　　　　　　　　System.out.println("LOOP");<br>
+6.　　　　　　　}<br>
+7.　　　　　}<br>
+8.　　　}<br>
+9.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (4,17,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0; i < 3; i++) {<br>
+4.　　　　　　　for (int j = 0; j < i; j++) {<br>
+5.　　　　　　　　　System.out.println("LOOP");<br>
+6.　　　　　　　}<br>
+7.　　　　　}<br>
+8.　　　}<br>
+9.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (4,18,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for (int i = 0; i < 2;  i++) {<br>
+4.　　　　　　　for (int j = 0; j < 2; j += i) {<br>
+5.　　　　　　　　　System.out.println("LOOP");<br>
+6.　　　　　　　}<br>
+7.　　　　　}<br>
+8.　　　}<br>
+9.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (4,19,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 0;<br>
+4.　　　　　while (i < 2) {<br>
+5.　　　　　　　i++;<br>
+6.　　　　　　　for (int j = 0; j < 2; j++) {<br>
+7.　　　　　　　　　System.out.print(i * j + " ");<br>
+8.　　　　　　　}<br>
+9.　　　　　}<br>
+10.　　}<br>
+11. }<br>',5,1);
+INSERT INTO QUIZ VALUES (4,20,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int j = 0;<br>
+4.　　　　　for (int i = 0; i < 2; i++) {<br>
+5.　　　　　　　while(j <= i) {<br>
+6.　　　　　　　　　System.out.println("LOOP");<br>
+7.　　　　　　　　　j++;<br>
+8.　　　　　　　}<br>
+9.　　　　　}<br>
+10.　　}<br>
+11. }<br>',4,1);
+INSERT INTO QUIZ VALUES (5,1,'カプセル化の説明として、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,2,'従業員の情報を表すEmployeeクラスがある。正しくカプセル化されるようこのクラスを修正したい。修正内容として、正しいものを選びなさい。(2つ選択)<br>
+<br>
+1.　public class Employee {<br>
+2.　　　String corporateName;<br>
+3.　　　String corporateAddress;<br>
+4.　　　int employeeNo;<br>
+5.　　　String name;<br>
+6.　}<br>',5,2);
+INSERT INTO QUIZ VALUES (5,3,'カプセル化の維持に欠かせない原則として、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,4,'データ隠蔽を実現するためには、フィールドをどのように修飾すればよいか。正しいものを選びなさい。(1つ選択)',5,1);
+INSERT INTO QUIZ VALUES (5,5,'データ隠蔽の説明として、最も適切なものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,6,'共通部分だけを抽出し、それ以外を無視して扱うことを何と呼ぶか。正しい用語を選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,7,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class A {<br>
+2.　　　public void test() {<br>
+3.　　　　　System.out.println("A");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class B extends A {<br>
+2.　　　public void test() {<br>
+3.　　　　　System.out.println("B");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　A a = new B();<br>
+4.　　　　　a.test();<br>
+5.　　　}<br>
+6.　}<br>',7,1);
+INSERT INTO QUIZ VALUES (5,8,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Parent {<br>
+2.　　　public void method() {<br>
+3.　　　　　System.out.println("Parent");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Child extends Parent {<br>
+2.　　　public void method(String val) {<br>
+3.　　　　　System.out.println(val);<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Parent p = new Child();<br>
+4.　　　　　p.method("Child");<br>
+5.　　　}<br>
+6.　}<br>',6,1);
+INSERT INTO QUIZ VALUES (5,9,'ポリモーフィズムのメリットに関する説明として、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,10,'情報隠蔽の説明として、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,11,'情報隠蔽を実現する手段として、正しいものを選びなさい。(3つ選択)',6,3);
+INSERT INTO QUIZ VALUES (5,12,'インタフェースに関する説明として、誤っているものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,13,'ポリモーフィズムに関係が深い用語として、もっとも適切なものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (5,14,'AとBの2つのクラスがある。この2つのクラスで「A has-a B」の関係を表現しているコードとして、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (5,15,'次のようなインタフェースやクラスがあるとき、is-a関係を正しく表しているものを選びなさい。(2つ選択)<br>
+<br>
+1.　public interface A {<br>
+2.　　　// any code<br>
+3.　}<br>
+_________________________________________<br>
+1.　public abstract class B implements A {<br>
+2.　　　// any code<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class C extends B {<br>
+2.　　　// any code<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class D implements A {<br>
+2.　　　// any code<br>
+3.　}<br>',6,2);
+INSERT INTO QUIZ VALUES (5,16,'次のプログラムをコンパイル、実行した結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public interface MusicPlayer {<br>
+2.　　　String play();<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class CdPlayer implements MusicPlayer {<br>
+2.　　　public String play() {<br>
+3.　　　　　return "A";<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Mp3Player {<br>
+2.　　　public String play() {<br>
+3.　　　　　return "B";<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　MusicPlayer[] players = {new CdPlayer(), new Mp3Player(), new CdPlayer()};<br>
+4.　　　　　for (MusicPlayer player : players) {<br>
+5.　　　　　　　System.our.print(player.play());<br>
+6.　　　　　}<br>
+7.　　　}<br>
+8.　}<br>',6,1);
+INSERT INTO QUIZ VALUES (5,17,'具象クラスと抽象クラスに関する説明として、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (6,1,'クラスの名前として適切なものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (6,2,'クラスブロック内に定義できる要素として正しいものを選びなさい。(3つ選択)',4,3);
+INSERT INTO QUIZ VALUES (6,3,'クラス定義の記述として正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (6,4,'次のプログラムの3行目にインスタンスを生成するコードを記述したい。正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　// インスタンス生成のコード<br>
+4.　　　}<br>
+5.　}<br>
+6.　class ClassA<br>
+7.　　　// クラス内の定義<br>
+8.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (6,5,'コンストラクタの定義に関する説明として正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (6,6,'次のプログラムの4行目にメソッド呼び出しのコードを記述したい。正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　ClassA classA = new ClassA();<br>
+4.　　　　　　　// メソッド呼び出しのコード<br>
+5.　　　}<br>
+6.　}<br>
+7.<br>
+8.　class ClassA {<br>
+9.　　　void doMethod() {<br>
+10.　　　　　// メソッド内の処理<br>
+11.　　}<br>
+12. }<br>',4,1);
+INSERT INTO QUIZ VALUES (6,7,'次のプログラムの実行後に、Documentクラスのインスタンスはいくつ生成されるか。正しい個数を選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Document doc1 = null;<br>
+4.　　　　　Document doc2 = new Document();<br>
+5.　　　　　Document doc3 = doc2;<br>
+6.　　　　　Document doc4 = doc3;<br>
+7.　　　}<br>
+8.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (6,8,'メソッドをオーバーロードする場合に、一致させなければいけないメソッド定義の要素として適切なものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (6,9,'メソッドのシグニチャを構成する要素として正しいものを選びなさい。(4つ選択)',7,4);
+INSERT INTO QUIZ VALUES (6,10,'次のクラスにメソッドをオーバーロードして定義する場合の記述として、正しいものを選びなさい。(2つ選択)<br>
+<br>
+1.　public class ClassA {<br>
+2.　　　int doMethod(int a) {<br>
+3.　　　　　return 1;<br>
+4.　　　}<br>
+5.　}<br>',4,2);
+INSERT INTO QUIZ VALUES (6,11,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　ClassA classA = new ClassA();<br>
+4.　　　　　classA.doMethod(0);<br>
+5.　　　}<br>
+6.　}<br>
+7.<br>
+8.　class ClassA {<br>
+9.　　　public void doMethod() {<br>
+10.　　　　System.out.println("doMethod-A");<br>
+11.　　}<br>
+12.　　public void doMethod(int a) {<br>
+13.　　　　System.out.println("doMethod-B");<br>
+14.　　}<br>
+15. }<br>',5,1);
+INSERT INTO QUIZ VALUES (6,12,'次のクラスに定義するコンストラクタとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Account {<br>
+2.　　　private int balance;<br>
+3.　}',4,1);<br>
+INSERT INTO QUIZ VALUES (6,13,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Station s = new Station();<br>
+4.　　　　　s.setName("Santa Clara");<br>
+5.　　　　　s.printName();<br>
+6.　　　}<br>
+7.　}<br>
+8.<br>
+9.　class Station {<br>
+10.　　private String name;<br>
+11.<br>
+12.　　public Station(String name) {<br>
+13.　　　　this.name = name;<br>
+14.　　}<br>
+15.　　public void setName(String name) {<br>
+16.　　　　this.name = name;<br>
+17.　　}<br>
+18.　　public void printName() {<br>
+19.　　　　System.out.println(name);<br>
+20.　　}<br>
+21. }<br>',4,1);
+INSERT INTO QUIZ VALUES (6,14,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Document d = new Document("James");<br>
+4.　　　　　d.printOwner();<br>
+5.　　　}<br>
+6.　}<br>
+7.<br>
+8.　class Document {<br>
+9.　　　private String owner;<br>
+10.<br>
+11.　　public Document() {<br>
+12.　　　　this.owner = "none";<br>
+13.　　}<br>
+14.　　public Document(String owner) {<br>
+15.　　　　this.owner = owner;<br>
+16.　　}<br>
+17.　　public void printOwner() {<br>
+18.　　　　System.out.println(owner);<br>
+19.　　}<br>
+20. }<br>',5,1);
+INSERT INTO QUIZ VALUES (6,15,'this()の説明として正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (6,16,'次のプログラムの13行目に挿入するコードとして正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Book b = new Book();<br>
+4.　　　　　b.print();<br>
+5.　　　}<br>
+6.　}<br>
+7.<br>
+8.　class Book {<br>
+9.　　　private String title;<br>
+10.　　private int price;<br>
+11.<br>
+12.　　public Book() {<br>
+13.　　　　// insert code here<br>
+14.　　}<br>
+15.　　public Book(String title, int price) {<br>
+16.　　　　this.title = title;<br>
+17.　　　　this.price = price;<br>
+18.　　}<br>
+19.　　public void print() {<br>
+20.　　　　System.out.println(title + "," + price);<br>
+21.　　}<br>
+22.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (6,17,'次のプログラムを実行し、画面に「sample」と表示したい。次のプログラムの15行目にあてはまるコードを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Item item = new Item();<br>
+4.　　　　　item.setName("sample")<br>
+5.　　　　　System.out.println(item.getName());<br>
+6.　　　}<br>
+7.　}<br>
+8.<br>
+9.　　　class Item {<br>
+10.　　　　private String name;<br>
+11.　　　　public String getName() {<br>
+12.　　　　　　return name;<br>
+13.　　　　}<br>
+14.　　　　public void setName(String name) {<br>
+15.　　　　　　// insert code here<br>
+16.　　　　}<br>
+17.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (6,18,'アクセス修飾子とその意味の組み合わせとして、正しいものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (6,19,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Food f = new Food("a food");<br>
+4.　　　　　f.name = "b food";<br>
+5.　　　　　f.print();<br>
+6.　　　}<br>
+7.　}<br>
+8.<br>
+9.　class Food {<br>
+10.　　private String name;<br>
+11.<br>
+12.　　public Food(String n) {<br>
+13.　　　　name = n;<br>
+14.　　}<br>
+15.　　public void print() {<br>
+16.　　　　System.out.println(name);<br>
+17.　　}<br>
+18.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (6,20,'次のプログラムを実行し、実行結果のとおりになるようにしたい。空欄にあてはまるコードを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　System.out.println(ClassA.str);<br>
+4.　　　}<br>
+5.　}<br>
+6.<br>
+7.　class ClassA {<br>
+8.　　　□ String str = "hoge";<br>
+9.　}<br>
+<br>
+【実行結果】<br>
+hoge<br>',4,1);
+INSERT INTO QUIZ VALUES (6,21,'次のプログラムを実行し、実行結果のとおりになるようにしたい。空欄にあてはまるコードを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int n = □;<br>
+4.　　　　　System.out.println(n);<br>
+5.　　　}<br>
+6.　}<br>
+7.<br>
+8.　class ClassA {<br>
+9.　　　public static int number = 50;<br>
+10. }<br>
+<br>
+【実行結果】<br>
+50<br>',4,1);
+INSERT INTO QUIZ VALUES (6,22,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Part p1 = new Part();<br>
+4.　　　　　Part p2 = new Part();<br>
+5.　　　　　p1.count = 1;<br>
+6.　　　　　System.out.println(p2.count);<br>
+7.　　　}<br>
+8.　}<br>
+9.<br>
+10.　class Part {<br>
+11.　　　public static int count = 0;<br>
+12.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (6,23,'次のプログラムを実行し、実行結果のとおりになるようにしたい。空欄にあてはまるキーワードを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　ClassA.doMethod();<br>
+4.　　　}<br>
+5.　}<br>
+6.<br>
+7.　class ClassA {<br>
+8.　　　□ void doMethod() {<br>
+9.　　　　　　System.out.println("do something");<br>
+10.　　}<br>
+11.　}<br>
+<br>
+【実行結果】<br>
+do something<br>',4,1);
+INSERT INTO QUIZ VALUES (6,24,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　ClassA a = new ClassA();<br>
+4.　　　　　String str = a.doMethod();<br>
+5.　　　　　System.out.println(str);<br>
+6.　　　}<br>
+7.　}<br>
+8.<br>
+9.　class ClassA {<br>
+10.　　static String doMethod() {<br>
+11.　　　　return "hoge";<br>
+12.　　}<br>
+13.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (6,25,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int n = ClassA.getNumber();<br>
+4.　　　　　System.out.println(n);<br>
+5.　　　}<br>
+6.　}<br>
+7.<br>
+8.　class ClassA {<br>
+9.　　　private int number = 0;<br>
+10.<br>
+11.　　public static int getNumber() {<br>
+12.　　　　return number;<br>
+13.　　}<br>
+14. }<br>',4,1);
+INSERT INTO QUIZ VALUES (6,26,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Counter c1 = new Counter();<br>
+4.　　　　　Counter c2 = new Counter();<br>
+5.　　　　　c1.incrementCount();<br>
+6.　　　　　c2.incrementCount();<br>
+7.　　　　　System.out.println(Counter.getCount());<br>
+8.　　　}<br>
+9.　}<br>
+10.<br>
+11.　class Counter {<br>
+12.　　　static int count = 0;<br>
+13.<br>
+14.　　　public static int getCount() {<br>
+15.　　　　　return count;<br>
+16.　　　}<br>
+17.　　　public static void incrementCount() {<br>
+18.　　　　　count++;<br>
+19.　　　}<br>
+20.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (7,1,'Aクラスを継承したBクラスを定義しているコードとして、正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (7,2,'次のようなクラスがあったとき、Sampleクラスのインスタンスが持っているメソッドとして正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class A {<br>
+2.　　　public void methodA() {<br>
+3.　　　　　System.out.println("A");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class B extends A {<br>
+2.　　　public void methodB() {<br>
+3.　　　　　System.out.println("B");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class C extends A {<br>
+2.　　　public void methodC() {<br>
+3.　　　　　System.out.println("C");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Sample extends C {<br>
+2.　　　// no more code<br>
+3.　}<br>',7,1);
+INSERT INTO QUIZ VALUES (7,3,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class SuperClass {<br>
+2.　　　private int num;<br>
+3.　　　public void setNum(int num) {<br>
+4.　　　　　this.num = num;<br>
+5.　　　}<br>
+6.　}<br>
+_________________________________________<br>
+1.　public class SubClass extends SuperClass {<br>
+2.　　　private int num;<br>
+3.　　　public int getNum() {<br>
+4.　　　　　return this.num;<br>
+5.　　　}<br>
+6.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　SubClass sub = new SubClass();<br>
+4.　　　　　sub.setNum(10);<br>
+5.　　　　　System.out.println(sub.getNum());<br>
+6.　　　}<br>
+7.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (7,4,'サブクラスのインスタンスが継承元のスーパークラスから引き継げないものを選びなさい。(2つ選択)',4,2);
+INSERT INTO QUIZ VALUES (7,5,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class A {<br>
+2.　　　public A() {<br>
+3.　　　　　System.out.println("A");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class B {<br>
+2.　　　public B() {<br>
+3.　　　　　System.out.println("B");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　B b = new B();<br>
+4.　　　}<br>
+5.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (7,6,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class SuperClass {<br>
+2.　　　public SuperClass(String val) {<br>
+3.　　　　　System.out.println(val);<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class SubClass extends SuperClass {<br>
+2.　　　public void test() {<br>
+3.　　　　　System.out.println("test");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Sample {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　SubClass sub = new SubClass();<br>
+4.　　　　　sub.test();<br>
+5.　　　}<br>
+6.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (7,7,'次のプログラムを実行し、実行結果のとおりになるようにしたい。SubClassクラスの3行目に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class SuperClass {<br>
+2.　　　public SuperClass() {<br>
+3.　　　　　System.out.println("A");<br>
+4.　　　}<br>
+5.　　　public SuperClass(String val) {<br>
+6.　　　　　System.out.println(val);<br>
+7.　　　}<br>
+8.　}<br>
+_________________________________________<br>
+1.　public class SubClass extends SuperClass {<br>
+2.　　　pubic SubClass() {<br>
+3.　　　　　// insert code here<br>
+4.　　　}<br>
+5.　　　public SubClass(String val) {<br>
+6.　　　　　System.out.println(val);<br>
+7.　　　}<br>
+8.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　new SubClass();<br>
+4.　　　}<br>
+5.　}<br>
+<br>
+【実行結果】<br>
+A<br>
+B<br>',4,1);
+INSERT INTO QUIZ VALUES (7,8,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class A {<br>
+2.　　　public A(String val) {<br>
+3.　　　　　System.out.println(val);<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class B extends A {<br>
+2.　　　public B() {<br>
+3.　　　　　super("A");<br>
+4.　　　　　this("B");<br>
+5.　　　}<br>
+6.　　　public B(String val) {<br>
+7.　　　　　super(val);<br>
+8.　　　}<br>
+9.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　new B();<br>
+4.　　　}<br>
+5.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (7,9,'サブクラスでスーパークラスのメソッドを再定義することを何と呼ぶか。正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (7,10,'次のAクラスのhelloメソッドをオーバーライドしたメソッド定義として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class A {<br>
+2.　　　protected void hello() {<br>
+3.　　　　　System.out.println("hello");<br>
+4.　　　}<br>
+5.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (7,11,'次のAクラスのhelloメソッドをオーバーライドしたメソッド定義として、誤っているものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class A {<br>
+2.　　　public void hello()<br>
+3.　　　　　　　throws RuntimeException, ArrayIndexOutOfBoundsException {<br>
+4.　　　　　System.out.println("A");<br>
+5.　　　}<br>
+6.　}<br>',4,1);
+INSERT INTO QUIZ VALUES (7,12,'次のプログラムを実行し、実行結果のとおりになるようにしたい。SubClassクラスの3行目に挿入するコードとして、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class SuperClass {<br>
+2.　　　public void sample() {<br>
+3.　　　　　System.out.println("super");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class SubClass extends SuperClass {<br>
+2.　　　public void sample() {<br>
+3.　　　　　// insert code here<br>
+4.　　　　　System.out.println("sub");<br>
+5.　　　}<br>
+6.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　SubClass sub = new SubClass();<br>
+4.　　　　　sub.sample();<br>
+5.　　　}<br>
+6.　}<br>
+<br>
+【実行結果】<br>
+super<br>
+sub<br>',4,1);
+INSERT INTO QUIZ VALUES (7,13,'インタフェースに定義するフィールドの修飾子として、正しいものを選びなさい。(3つ選択)',7,3);
+INSERT INTO QUIZ VALUES (7,14,'インタフェースに定義するメソッドの修飾子として、正しいものを選びなさい。(2つ選択)',6,2);
+INSERT INTO QUIZ VALUES (7,15,'インタフェースの特徴として、正しいものを選びなさい。(3つ選択)',6,3);
+INSERT INTO QUIZ VALUES (7,16,'抽象クラスに関する説明として、正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (7,17,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public interface A {<br>
+2.　　　// any code<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class B implements A {<br>
+2.　　　// any code<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class C extends B {<br>
+2.　　　// any code<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　B b = new B();<br>
+4.　　　　　A a = b;<br>
+5.　　　　　C c = (C) a;<br>
+6.　　　}<br>
+7.　}<br>',6,1);
+INSERT INTO QUIZ VALUES (7,18,'パッケージに関する説明として、正しいものを選びなさい。(3つ選択)',5,3);
+INSERT INTO QUIZ VALUES (7,19,'インポート宣言に関する説明として、正しいものを選びなさい。(2つ選択)',5,2);
+INSERT INTO QUIZ VALUES (8,1,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　for(int i = 0; i < 5; i++) {<br>
+4.　　　　　　　for(i = 5; i < 10; i++) {<br>
+5.　　　　　　　　　System.out.print(i);<br>
+6.　　　　　　　}<br>
+7.　　　　　}<br>
+8.　　　}<br>
+9.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (8,2,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　int i = 5;<br>
+4.　　　　　System.out.println((i += 5) + ":" + (i--));<br>
+5.　　　}<br>
+6.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (8,3,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Train {<br>
+2.　　　static String name = "none";<br>
+3.<br>
+4.　　　public Train(String name) {<br>
+5.　　　　　this.name = name;<br>
+6.　　　}<br>
+7.<br>
+8.　　　public static void main(String[] args) {<br>
+9.　　　　　Train t1 = new Train();<br>
+10.　　　　Train t2 = new Train("aline");<br>
+11.　　　　System.out.print(t1.name +   + t2.name);<br>
+12.　　}<br>
+13.　}<br>',5,1);
+INSERT INTO QUIZ VALUES (8,4,'ある企業は、GUIベースのアプリケーション開発を希望しており、将来的な拡張として、Webベースのアプリケーションへの移行を予定している。<br>
+このアプリケーションを作成するには、どのJavaテクノロジを使用するのがよいか。正しいものを選びなさい。(1つ選択)',4,1);
+INSERT INTO QUIZ VALUES (8,5,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public interface Sample {<br>
+2.　　　void test();<br>
+3.　}<br>
+_________________________________________<br>
+1.　public class A implements Sample {<br>
+2.　　　public void test() {<br>
+3.　　　　　System.out.println("A");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class B extends A {<br>
+2.　　　public void test() {<br>
+3.　　　　　System.out.println("B");<br>
+4.　　　}<br>
+5.　}<br>
+_________________________________________<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Sample[] samples = {new A(), new B()};<br>
+4.　　　　　for (Sample s : samples) {<br>
+5.　　　　　　　s.test();<br>
+6.　　　　　}<br>
+7.　　　}<br>
+8.　}<br>',6,1);
+
+DROP TABLE ANSWER;
+
+CREATE TABLE ANSWER (
+  QUIZ_CHAPTER_ID    	INTEGER,
+  QUIZ_ID       	INTEGER,
+  ANSWER_ID       	INTEGER, PRIMARY KEY(QUIZ_CHAPTER_ID,QUIZ_ID,ANSWER_ID),
+  ANSWER 		VARCHAR(250)   NOT NULL,
+  ANSWER_FLG		CHAR(1)   NOT NULL  
+);
+
+INSERT INTO ANSWER VALUES (1,1,1,'A. すべての変数は、型の宣言をしなければならない',1);
+INSERT INTO ANSWER VALUES (1,1,2,'B. すべての式は、型を持たない',0);
+INSERT INTO ANSWER VALUES (1,1,3,'C. 式の型はコンパイル時に解釈される',1);
+INSERT INTO ANSWER VALUES (1,1,4,'D. 実行時にエラーを発生させることで、型の整合性を確認する',0);
+INSERT INTO ANSWER VALUES (1,2,1,'A. マルチスレッドによる並行処理をサポートする',1);
+INSERT INTO ANSWER VALUES (1,2,2,'B. マルチプロセスによる並行処理をサポートする',0);
+INSERT INTO ANSWER VALUES (1,2,3,'C. シングルスレッドアプリケーションのみをサポートする',0);
+INSERT INTO ANSWER VALUES (1,2,4,'D. 並行処理を完全に制御できる',0);
+INSERT INTO ANSWER VALUES (1,2,5,'E. 並行処理を部分的に制御できる',1);
+INSERT INTO ANSWER VALUES (1,3,1,'A. 特定のOSに特化したプログラミング言語である',0);
+INSERT INTO ANSWER VALUES (1,3,2,'B. ほかのプログラミング言語に比べて高速に実行できる',0);
+INSERT INTO ANSWER VALUES (1,3,3,'C. あらかじめ機械語にコンパイルされる',0);
+INSERT INTO ANSWER VALUES (1,3,4,'D. メモリ管理が自動化される',1);
+INSERT INTO ANSWER VALUES (1,3,5,'E. セキュリティが向上する実行方式を取り入れている',1);
+INSERT INTO ANSWER VALUES (1,4,1,'A. コンパイラによって機械語にコンパイルされる',0);
+INSERT INTO ANSWER VALUES (1,4,2,'B. コンパイラによって中間コードにコンパイルされる',1);
+INSERT INTO ANSWER VALUES (1,4,3,'C. 実行可能ファイルを作成する',0);
+INSERT INTO ANSWER VALUES (1,4,4,'D. JVMにクラスファイルを読み込ませる',1);
+INSERT INTO ANSWER VALUES (1,5,1,'A. プラットフォームに依存したネイティブコードが記述されている',0);
+INSERT INTO ANSWER VALUES (1,5,2,'B. プラットフォームに依存しないネイティブコードが記述されている',0);
+INSERT INTO ANSWER VALUES (1,5,3,'C. JVMだけが理解できるコードが記述されている',1);
+INSERT INTO ANSWER VALUES (1,5,4,'D. 人間だけが理解できるコードが記述されている',0);
+INSERT INTO ANSWER VALUES (1,6,1,'A. 自動的にメモリを開放する',1);
+INSERT INTO ANSWER VALUES (1,6,2,'B. メモリを任意のタイミングで解放できる',0);
+INSERT INTO ANSWER VALUES (1,6,3,'C. ポインタを使ってメモリを自由に操作できる',0);
+INSERT INTO ANSWER VALUES (1,6,4,'D. メモリの効率的な利用を自動化する',1);
+INSERT INTO ANSWER VALUES (1,7,1,'A. publicであること',1);
+INSERT INTO ANSWER VALUES (1,7,2,'B. staticであること',1);
+INSERT INTO ANSWER VALUES (1,7,3,'C. 1つのソースファイルに複数記述できる',0);
+INSERT INTO ANSWER VALUES (1,7,4,'D. 戻り値型はintであること',0);
+INSERT INTO ANSWER VALUES (1,7,5,'E. 引数はString配列型もしくはString型の可変長引数であること',1);
+INSERT INTO ANSWER VALUES (1,7,6,'F. 戻り値として、0もしくは1を戻すこと',0);
+INSERT INTO ANSWER VALUES (1,8,1,'A. 1つのソースファイルにpublicなインターフェースを複数記述できる',0);
+INSERT INTO ANSWER VALUES (1,8,2,'B. ソースファイルの名前はpublicなクラス名と一致させなくてはいけない',1);
+INSERT INTO ANSWER VALUES (1,8,3,'C. 1つのソースファイルには、1つのクラスだけを記述できる',0);
+INSERT INTO ANSWER VALUES (1,8,4,'D. 1つのソースファイル内に、デフォルトのアクセス修飾子で修飾したインターフェースとpublicなクラスの両方を記述できる',1);
+INSERT INTO ANSWER VALUES (1,8,5,'E. 1つのソースファイルにpublicなクラスを複数記述できる',0);
+INSERT INTO ANSWER VALUES (1,9,1,'A. JVMが含まれる',1);
+INSERT INTO ANSWER VALUES (1,9,2,'B. GUIアプリケーションの開発に向いている',1);
+INSERT INTO ANSWER VALUES (1,9,3,'C. 大規模システム向けの機能をセットにして提供している',0);
+INSERT INTO ANSWER VALUES (1,9,4,'D. 使用のみを提供している',0);
+INSERT INTO ANSWER VALUES (1,10,1,'A. Java EEでは使用だけを定め、実装は各社が提供している',1);
+INSERT INTO ANSWER VALUES (1,10,2,'B. Java SEの範囲は含まない',0);
+INSERT INTO ANSWER VALUES (1,10,3,'C. エンタープライズ用途向けの多くの機能をセットにしたものである',1);
+INSERT INTO ANSWER VALUES (1,10,4,'D. 携帯電話のような、リソースが制限されたデバイス向けの機能を提供している',0);
+INSERT INTO ANSWER VALUES (1,11,1,'A. Java SEの機能の一部を抜き出して定義したエディションである',1);
+INSERT INTO ANSWER VALUES (1,11,2,'B. 基本的なライブラリとJVMを組み合わせたものを「プロファイル 」と呼ぶ',0);
+INSERT INTO ANSWER VALUES (1,11,3,'C. 特定のデバイスに対応するAPIだけを抽出したものを「コンフィギュレーション」と呼ぶ',0);
+INSERT INTO ANSWER VALUES (1,11,4,'D. Java MEでは、JVMではなく「KVM」と呼ばれる仮想マシンを使うことがある',1);
+INSERT INTO ANSWER VALUES (2,1,1,'A. integer',0);
+INSERT INTO ANSWER VALUES (2,1,2,'B. double',1);
+INSERT INTO ANSWER VALUES (2,1,3,'C. Number',0);
+INSERT INTO ANSWER VALUES (2,1,4,'D. byte',1);
+INSERT INTO ANSWER VALUES (2,1,5,'E. Character',0);
+INSERT INTO ANSWER VALUES (2,2,1,'A. String',1);
+INSERT INTO ANSWER VALUES (2,2,2,'B. Date',1);
+INSERT INTO ANSWER VALUES (2,2,3,'C. int',0);
+INSERT INTO ANSWER VALUES (2,2,4,'D. boolean',0);
+INSERT INTO ANSWER VALUES (2,2,5,'E. char[]',1);
+INSERT INTO ANSWER VALUES (2,3,1,'A. double',0);
+INSERT INTO ANSWER VALUES (2,3,2,'B. char',1);
+INSERT INTO ANSWER VALUES (2,3,3,'C. short',1);
+INSERT INTO ANSWER VALUES (2,3,4,'D. int',1);
+INSERT INTO ANSWER VALUES (2,3,5,'E. float',0);
+INSERT INTO ANSWER VALUES (2,4,1,'A. char',0);
+INSERT INTO ANSWER VALUES (2,4,2,'B. boolean',1);
+INSERT INTO ANSWER VALUES (2,4,3,'C. double',0);
+INSERT INTO ANSWER VALUES (2,4,4,'D. int',0);
+INSERT INTO ANSWER VALUES (2,4,5,'E. String',0);
+INSERT INTO ANSWER VALUES (2,5,1,'A. プリミティブ型の変数は配列インスタンスへの参照を保持できる',0);
+INSERT INTO ANSWER VALUES (2,5,2,'B. プリミティブ型の変数は文字列を保持できる',0);
+INSERT INTO ANSWER VALUES (2,5,3,'C. 参照型の変数はインスタンスへの参照を保持できる',1);
+INSERT INTO ANSWER VALUES (2,5,4,'D. 参照型の変数は整数値を保持できる',0);
+INSERT INTO ANSWER VALUES (2,5,5,'E. プリミティブ型の変数は数値、文字、真偽値を保持できる',1);
+INSERT INTO ANSWER VALUES (2,6,1,'A. int number;',1);
+INSERT INTO ANSWER VALUES (2,6,2,'B. length long;',0);
+INSERT INTO ANSWER VALUES (2,6,3,'C. String name, code;',1);
+INSERT INTO ANSWER VALUES (2,6,4,'D. boolean long;',0);
+INSERT INTO ANSWER VALUES (2,6,5,'E. double 3.7;',0);
+INSERT INTO ANSWER VALUES (2,7,1,'A. long number = 2.5;',0);
+INSERT INTO ANSWER VALUES (2,7,2,'B. float number = 5;',1);
+INSERT INTO ANSWER VALUES (2,7,3,'C. byte number = 128;',0);
+INSERT INTO ANSWER VALUES (2,7,4,'D. double number = 4.3;',1);
+INSERT INTO ANSWER VALUES (2,7,5,'E. int number = 3.0;',0);
+INSERT INTO ANSWER VALUES (2,8,1,'A. boolean flag = TRUE;',0);
+INSERT INTO ANSWER VALUES (2,8,2,'B. boolean flag = "true";',0);
+INSERT INTO ANSWER VALUES (2,8,3,'C. boolean flag = false;',1);
+INSERT INTO ANSWER VALUES (2,8,4,'D. boolean flag = 0;',0);
+INSERT INTO ANSWER VALUES (2,8,5,'E. boolean flag = "false";',0);
+UPDATE ANSWER SET ANSWER = REPLACE(ANSWER, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 8 AND ANSWER_ID = 5;
+INSERT INTO ANSWER VALUES (2,9,1,'A. char c = "AB";',0);
+INSERT INTO ANSWER VALUES (2,9,2,'B. char c = "T";',0);
+INSERT INTO ANSWER VALUES (2,9,3,'C. char c = "\u1F1C";',1);
+INSERT INTO ANSWER VALUES (2,9,4,'D. char c = "U";',1);
+INSERT INTO ANSWER VALUES (2,9,5,'E. char c = 97;',1);
+UPDATE ANSWER SET ANSWER = REPLACE(ANSWER, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 9 AND ANSWER_ID = 1;
+UPDATE ANSWER SET ANSWER = REPLACE(ANSWER, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 9 AND ANSWER_ID = 3;
+UPDATE ANSWER SET ANSWER = REPLACE(ANSWER, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 9 AND ANSWER_ID = 4;
+UPDATE ANSWER SET ANSWER = REPLACE(ANSWER, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 9 AND ANSWER_ID = 5;
+INSERT INTO ANSWER VALUES (2,10,1,'A. String str = "A";',1);
+INSERT INTO ANSWER VALUES (2,10,2,'B. String str = "null";',1);
+INSERT INTO ANSWER VALUES (2,10,3,'C. String str = "A";',0);
+INSERT INTO ANSWER VALUES (2,10,4,'D. String str = "true";',1);
+INSERT INTO ANSWER VALUES (2,10,5,'E. String str = true;',0);
+UPDATE ANSWER SET ANSWER = REPLACE(ANSWER, '"','''') WHERE QUIZ_CHAPTER_ID = 2 AND QUIZ_ID = 10 AND ANSWER_ID = 3;
+INSERT INTO ANSWER VALUES (2,11,1,'A. int final a = 10;',0);
+INSERT INTO ANSWER VALUES (2,11,2,'B. int frozen a = 17;',0);
+INSERT INTO ANSWER VALUES (2,11,3,'C. frozen int a = 13;',0);
+INSERT INTO ANSWER VALUES (2,11,4,'D. final int a = 8;',1);
+INSERT INTO ANSWER VALUES (2,11,5,'E. int a final = 3;',0);
+INSERT INTO ANSWER VALUES (2,11,6,'F. final int a;',1);
+INSERT INTO ANSWER VALUES (2,12,1,'A.  [blue] と表示される',0);
+INSERT INTO ANSWER VALUES (2,12,2,'B. [red] と表示される',0);
+INSERT INTO ANSWER VALUES (2,12,3,'C. コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (2,12,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (2,13,1,'A. [AB] と表示される',0);
+INSERT INTO ANSWER VALUES (2,13,2,'B. [A] と表示される',0);
+INSERT INTO ANSWER VALUES (2,13,3,'C. [B] と表示される',0);
+INSERT INTO ANSWER VALUES (2,13,4,'D. コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (2,13,5,'E. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (2,14,1,'A. private title String;',0);
+INSERT INTO ANSWER VALUES (2,14,2,'B. private String title;',1);
+INSERT INTO ANSWER VALUES (2,14,3,'C. String title private;',0);
+INSERT INTO ANSWER VALUES (2,14,4,'D. String private title;',0);
+INSERT INTO ANSWER VALUES (2,15,1,'A. Static int count;',1);
+INSERT INTO ANSWER VALUES (2,15,2,'B. int count static;',0);
+INSERT INTO ANSWER VALUES (2,15,3,'C. static private int count;',1);
+INSERT INTO ANSWER VALUES (2,15,4,'D. static count int;',0);
+INSERT INTO ANSWER VALUES (2,16,1,'A. 0 が表示される',0);
+INSERT INTO ANSWER VALUES (2,16,2,'B. 9 が表示される',0);
+INSERT INTO ANSWER VALUES (2,16,3,'C. 12が表示される',0);
+INSERT INTO ANSWER VALUES (2,16,4,'D. コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (2,16,5,'E. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (2,17,1,'A. int[] array = new int[];',0);
+INSERT INTO ANSWER VALUES (2,17,2,'B. int() array = new int(3);',0);
+INSERT INTO ANSWER VALUES (2,17,3,'C. int array = new int[3];',0);
+INSERT INTO ANSWER VALUES (2,17,4,'D. int[3] array = new int[];',0);
+INSERT INTO ANSWER VALUES (2,17,5,'E. int[] array = new int[3];',1);
+INSERT INTO ANSWER VALUES (2,18,1,'A. int[] array = {3, 8, 10};',1);
+INSERT INTO ANSWER VALUES (2,18,2,'B. int[] array = new {3, 8, 10};',0);
+INSERT INTO ANSWER VALUES (2,18,3,'C. int[] array = (3, 8, 10);',0);
+INSERT INTO ANSWER VALUES (2,18,4,'D. int() array = {3, 8, 10};',0);
+INSERT INTO ANSWER VALUES (2,18,5,'E. int array = {3, 8, 10};',0);
+INSERT INTO ANSWER VALUES (2,19,1,'A. array.size;',0);
+INSERT INTO ANSWER VALUES (2,19,2,'B. array.length();',0);
+INSERT INTO ANSWER VALUES (2,19,3,'C. array length;',0);
+INSERT INTO ANSWER VALUES (2,19,4,'D. array.length;',1);
+INSERT INTO ANSWER VALUES (2,19,5,'E. array.size();',0);
+INSERT INTO ANSWER VALUES (2,20,1,'A. 3 が表示される',0);
+INSERT INTO ANSWER VALUES (2,20,2,'B. 7 が表示される',1);
+INSERT INTO ANSWER VALUES (2,20,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (2,20,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (2,21,1,'A. 3 が表示される',0);
+INSERT INTO ANSWER VALUES (2,21,2,'B. 4 が表示される',0);
+INSERT INTO ANSWER VALUES (2,21,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (2,21,4,'D. 実行時に例外がスローされる',1);
+INSERT INTO ANSWER VALUES (2,22,1,'A. 3   が表示される',0);
+INSERT INTO ANSWER VALUES (2,22,2,'B. 3.5が表示される',0);
+INSERT INTO ANSWER VALUES (2,22,3,'C. コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (2,22,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (2,23,1,'A. 0  が表示される',0);
+INSERT INTO ANSWER VALUES (2,23,2,'B. 3  が表示される',1);
+INSERT INTO ANSWER VALUES (2,23,3,'C.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (2,23,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (2,24,1,'A. java Main HelloWorld',0);
+INSERT INTO ANSWER VALUES (2,24,2,'B. java Main Hello, World',0);
+INSERT INTO ANSWER VALUES (2,24,3,'C. java Main Hello World',1);
+INSERT INTO ANSWER VALUES (2,24,4,'D. java Main (Hello World)',0);
+INSERT INTO ANSWER VALUES (2,25,1,'A. 0  が表示される',0);
+INSERT INTO ANSWER VALUES (2,25,2,'B. 何も表示されない',0);
+INSERT INTO ANSWER VALUES (2,25,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (2,25,4,'D. 実行時に例外がスローされる',1);
+INSERT INTO ANSWER VALUES (3,1,1,'A. 2.5が表示される',0);
+INSERT INTO ANSWER VALUES (3,1,2,'B. 2   が表示される',1);
+INSERT INTO ANSWER VALUES (3,1,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,1,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,2,1,'A. 6   が表示される',0);
+INSERT INTO ANSWER VALUES (3,2,2,'B. 6.0が表示される',1);
+INSERT INTO ANSWER VALUES (3,2,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,2,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,3,1,'A. 1   が表示される',1);
+INSERT INTO ANSWER VALUES (3,3,2,'B. 3   が表示される',0);
+INSERT INTO ANSWER VALUES (3,3,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,3,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,4,1,'A. 2   が表示される',0);
+INSERT INTO ANSWER VALUES (3,4,2,'B. 6   が表示される',1);
+INSERT INTO ANSWER VALUES (3,4,3,'C. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,4,4,'D. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,5,1,'A.  1  が表示される',0);
+INSERT INTO ANSWER VALUES (3,5,2,'B.  0  が表示される',1);
+INSERT INTO ANSWER VALUES (3,5,3,'C.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,5,4,'D.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,6,1,'A.  105が表示される',1);
+INSERT INTO ANSWER VALUES (3,6,2,'B.  15  が表示される',0);
+INSERT INTO ANSWER VALUES (3,6,3,'C.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,6,4,'D.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,7,1,'A.  5  が表示される',0);
+INSERT INTO ANSWER VALUES (3,7,2,'B.  7  が表示される',0);
+INSERT INTO ANSWER VALUES (3,7,3,'C.  8  が表示される',1);
+INSERT INTO ANSWER VALUES (3,7,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,7,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,8,1,'A.  3  が表示される',0);
+INSERT INTO ANSWER VALUES (3,8,2,'B. -4  が表示される',1);
+INSERT INTO ANSWER VALUES (3,8,3,'C. -4.5が表示される',0);
+INSERT INTO ANSWER VALUES (3,8,4,'D. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,8,5,'E. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,9,1,'A.  155が表示される',1);
+INSERT INTO ANSWER VALUES (3,9,2,'B.  20  が表示される',0);
+INSERT INTO ANSWER VALUES (3,9,3,'C.  5105が表示される',0);
+INSERT INTO ANSWER VALUES (3,9,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,9,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,10,1,'A.  6  が表示される',0);
+INSERT INTO ANSWER VALUES (3,10,2,'B.  7  が表示される',0);
+INSERT INTO ANSWER VALUES (3,10,3,'C.  8  が表示される',1);
+INSERT INTO ANSWER VALUES (3,10,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,10,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,11,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (3,11,2,'B.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (3,11,3,'C.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (3,11,4,'D.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,12,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (3,12,2,'B.  「BC」と表示される',1);
+INSERT INTO ANSWER VALUES (3,12,3,'C.  「ABC」と表示される',0);
+INSERT INTO ANSWER VALUES (3,12,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,12,5,'E. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,13,1,'A.  「AC」と表示される',0);
+INSERT INTO ANSWER VALUES (3,13,2,'B.  「BC」と表示される',1);
+INSERT INTO ANSWER VALUES (3,13,3,'C.  「C」  と表示される',0);
+INSERT INTO ANSWER VALUES (3,13,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,13,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,14,1,'A.  「same」と表示される',1);
+INSERT INTO ANSWER VALUES (3,14,2,'B.  「different」と表示される',0);
+INSERT INTO ANSWER VALUES (3,14,3,'C.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (3,14,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,15,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (3,15,2,'B.  「B」と表示される',0);
+INSERT INTO ANSWER VALUES (3,15,3,'C.  「C」と表示される',1);
+INSERT INTO ANSWER VALUES (3,15,4,'D. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,15,5,'E. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,16,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (3,16,2,'B.  「B」と表示される',1);
+INSERT INTO ANSWER VALUES (3,16,3,'C.  「C」と表示される',0);
+INSERT INTO ANSWER VALUES (3,16,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,16,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,17,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (3,17,2,'B.  「a=0,b=0」と表示される',0);
+INSERT INTO ANSWER VALUES (3,17,3,'C.  「a=1,b=1」と表示される',0);
+INSERT INTO ANSWER VALUES (3,17,4,'D.  「a=1,b=0」と表示される',1);
+INSERT INTO ANSWER VALUES (3,17,5,'E.  「a=0,b=1」と表示される',0);
+INSERT INTO ANSWER VALUES (3,18,1,'A.  5行目  when 1:<br>
+　　　8行目  when 2:',0);
+INSERT INTO ANSWER VALUES (3,18,2,'B.  5行目  else  1:<br>
+　　　8行目  else 2:',0);
+INSERT INTO ANSWER VALUES (3,18,3,'C.  5行目  while 1:<br>
+　　　8行目  while 2:',0);
+INSERT INTO ANSWER VALUES (3,18,4,'D.  5行目  case 1:<br>
+　　　8行目  case 2:',1);
+INSERT INTO ANSWER VALUES (3,19,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (3,19,2,'B.  「B」と表示される',0);
+INSERT INTO ANSWER VALUES (3,19,3,'C.  「C」と表示される',0);
+INSERT INTO ANSWER VALUES (3,19,4,'D.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (3,19,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,20,1,'A.  end:',0);
+INSERT INTO ANSWER VALUES (3,20,2,'B.  finally:',0);
+INSERT INTO ANSWER VALUES (3,20,3,'C.  default:',1);
+INSERT INTO ANSWER VALUES (3,20,4,'D.  exit:',0);
+INSERT INTO ANSWER VALUES (3,21,1,'A.  「BC」と表示される',0);
+INSERT INTO ANSWER VALUES (3,21,2,'B.  「B」  と表示される',0);
+INSERT INTO ANSWER VALUES (3,21,3,'C.  「AB」と表示される',1);
+INSERT INTO ANSWER VALUES (3,21,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,21,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,22,1,'A.  「本」  と表示される',0);
+INSERT INTO ANSWER VALUES (3,22,2,'B.  「ゲーム」と表示される',0);
+INSERT INTO ANSWER VALUES (3,22,3,'C.  「その他」と表示される',1);
+INSERT INTO ANSWER VALUES (3,22,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,22,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (3,23,1,'A.  「ABC」と表示される',1);
+INSERT INTO ANSWER VALUES (3,23,2,'B.  「AB」  と表示される',0);
+INSERT INTO ANSWER VALUES (3,23,3,'C.  「A」    と表示される',0);
+INSERT INTO ANSWER VALUES (3,23,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (3,23,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,1,1,'A.  i = 5',0);
+INSERT INTO ANSWER VALUES (4,1,2,'B.  i = 1; i < 5',0);
+INSERT INTO ANSWER VALUES (4,1,3,'C.  i < 5',1);
+INSERT INTO ANSWER VALUES (4,1,4,'D. i < 5; i = i +1',0);
+INSERT INTO ANSWER VALUES (4,2,1,'A.  4  が表示される',0);
+INSERT INTO ANSWER VALUES (4,2,2,'B.  5  が表示される',1);
+INSERT INTO ANSWER VALUES (4,2,3,'C.  6  が表示される',0);
+INSERT INTO ANSWER VALUES (4,2,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,2,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,3,1,'A.  「i=8,j=1」と表示される',0);
+INSERT INTO ANSWER VALUES (4,3,2,'B.  「i=16,j=2」と表示される',1);
+INSERT INTO ANSWER VALUES (4,3,3,'C.  「i=32,j=2」と表示される',0);
+INSERT INTO ANSWER VALUES (4,3,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,3,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,4,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,4,2,'B.  「LOOP」が1回表示される',0);
+INSERT INTO ANSWER VALUES (4,4,3,'C.  「LOOP」が2回表示される',1);
+INSERT INTO ANSWER VALUES (4,4,4,'D.  「LOOP」が3回表示される',0);
+INSERT INTO ANSWER VALUES (4,4,5,'E.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,4,6,'F.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,5,1,'A.  int i = 0; i++; i < 5',0);
+INSERT INTO ANSWER VALUES (4,5,2,'B. int i = 0; i < 5; i++',1);
+INSERT INTO ANSWER VALUES (4,5,3,'C. i < 5; int i = 0; i++',0);
+INSERT INTO ANSWER VALUES (4,5,4,'D. i = 0; i < 5; i++',0);
+INSERT INTO ANSWER VALUES (4,6,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,6,2,'B.  「LOOP」が1回表示される',0);
+INSERT INTO ANSWER VALUES (4,6,3,'C.  「LOOP」が無限に表示される',1);
+INSERT INTO ANSWER VALUES (4,6,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,6,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,7,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,7,2,'B.  「0 1 2」と表示される',1);
+INSERT INTO ANSWER VALUES (4,7,3,'C.  「0 1 2 3」と表示される',0);
+INSERT INTO ANSWER VALUES (4,7,4,'4.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,7,5,'5.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,8,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,8,2,'B.  「LOOP」が3回表示される',0);
+INSERT INTO ANSWER VALUES (4,8,3,'C.  「LOOP」が4回表示される',1);
+INSERT INTO ANSWER VALUES (4,8,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,8,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,9,1,'A.  何も表示されない',1);
+INSERT INTO ANSWER VALUES (4,9,2,'B.  「0 1 2」と表示される',0);
+INSERT INTO ANSWER VALUES (4,9,3,'C.  「0 1 2 3」と表示される',0);
+INSERT INTO ANSWER VALUES (4,9,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,9,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,10,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,10,2,'B.  「LOOP」が2回表示される',1);
+INSERT INTO ANSWER VALUES (4,10,3,'C.  「LOOP」が3回表示される',0);
+INSERT INTO ANSWER VALUES (4,10,4,'D.  「LOOP」が4回表示される',0);
+INSERT INTO ANSWER VALUES (4,10,5,'E.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,10,6,'F.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,11,1,'A.  「LOOP」が無限に表示される',0);
+INSERT INTO ANSWER VALUES (4,11,2,'B.  「LOOP」が5回表示される',1);
+INSERT INTO ANSWER VALUES (4,11,3,'C.  「LOOP」が6回表示される',0);
+INSERT INTO ANSWER VALUES (4,11,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,11,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,12,1,'A.  int e : array',1);
+INSERT INTO ANSWER VALUES (4,12,2,'B.  int e ; array',0);
+INSERT INTO ANSWER VALUES (4,12,3,'C.  array : int e',0);
+INSERT INTO ANSWER VALUES (4,12,4,'D.  e : array',0);
+INSERT INTO ANSWER VALUES (4,13,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,13,2,'B.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (4,13,3,'C.  「A B C」と表示される',1);
+INSERT INTO ANSWER VALUES (4,13,4,'D. コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,13,5,'E. 実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,14,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,14,2,'B.  「0 1 2」と表示される',0);
+INSERT INTO ANSWER VALUES (4,14,3,'C.  「0 1 2 3」と表示される',0);
+INSERT INTO ANSWER VALUES (4,14,4,'D.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (4,14,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,15,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,15,2,'B.  「LOOP」が1回表示される',1);
+INSERT INTO ANSWER VALUES (4,15,3,'C.  「LOOP」が3回表示される',0);
+INSERT INTO ANSWER VALUES (4,15,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (4,15,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (4,16,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,16,2,'B.  「LOOP」が6回表示される',1);
+INSERT INTO ANSWER VALUES (4,16,3,'C.  「LOOP」が9回表示される',0);
+INSERT INTO ANSWER VALUES (4,16,4,'D.  「LOOP」が12回表示される',0);
+INSERT INTO ANSWER VALUES (4,17,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,17,2,'B.  「LOOP」が1回表示される',0);
+INSERT INTO ANSWER VALUES (4,17,3,'C.  「LOOP」が2回表示される',0);
+INSERT INTO ANSWER VALUES (4,17,4,'D.  「LOOP」が3回表示される',1);
+INSERT INTO ANSWER VALUES (4,18,1,'A.  「LOOP」が無限に表示される',1);
+INSERT INTO ANSWER VALUES (4,18,2,'B.  「LOOP」が1回表示される',0);
+INSERT INTO ANSWER VALUES (4,18,3,'C.  「LOOP」が3回表示される',0);
+INSERT INTO ANSWER VALUES (4,18,4,'D.  「LOOP」が4回表示される',0);
+INSERT INTO ANSWER VALUES (4,19,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,19,2,'B.  「0 1 2 4」と表示される',0);
+INSERT INTO ANSWER VALUES (4,19,3,'C.  「0 1 0 1」と表示される',0);
+INSERT INTO ANSWER VALUES (4,19,4,'D.  「0 1 0 2」と表示される',1);
+INSERT INTO ANSWER VALUES (4,19,5,'E.  「0 1 0 2 0 3」と表示される',0);
+INSERT INTO ANSWER VALUES (4,20,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (4,20,2,'B.  「LOOP」が1回表示される',0);
+INSERT INTO ANSWER VALUES (4,20,3,'C.  「LOOP」が2回表示される',1);
+INSERT INTO ANSWER VALUES (4,20,4,'D.  「LOOP」が3回表示される',0);
+INSERT INTO ANSWER VALUES (5,1,1,'A.  同種の異なるインスタンスを同じ型で扱う',0);
+INSERT INTO ANSWER VALUES (5,1,2,'B.  公開すべきものと非公開にすべきものを区別して扱う',0);
+INSERT INTO ANSWER VALUES (5,1,3,'C.  関係するものをひとまとめにする',1);
+INSERT INTO ANSWER VALUES (5,1,4,'D.  クラスのフィールドを隠蔽し、他のクラスからは直接使えないようにする',0);
+INSERT INTO ANSWER VALUES (5,2,1,'A.  すべてのフィールドのアクセス修飾子をprivateにする',0);
+INSERT INTO ANSWER VALUES (5,2,2,'B.  フィールドにアクセスするためのgetterメソッドとsetterメソッドを追加する',0);
+INSERT INTO ANSWER VALUES (5,2,3,'C.  corporateNameとcorporateAddressフィールドをほかのクラスに移動する',1);
+INSERT INTO ANSWER VALUES (5,2,4,'D.  名前を名乗って挨拶するメソッドを追加する',1);
+INSERT INTO ANSWER VALUES (5,2,5,'E.  給与計算メソッドを追加する',0);
+INSERT INTO ANSWER VALUES (5,3,1,'A.  データ隠蔽',1);
+INSERT INTO ANSWER VALUES (5,3,2,'B.  情報隠蔽',0);
+INSERT INTO ANSWER VALUES (5,3,3,'C.  抽象化',0);
+INSERT INTO ANSWER VALUES (5,3,4,'D.  データ抽象',0);
+INSERT INTO ANSWER VALUES (5,4,1,'A.  public final',0);
+INSERT INTO ANSWER VALUES (5,4,2,'B.  public static',0);
+INSERT INTO ANSWER VALUES (5,4,3,'C.  private',1);
+INSERT INTO ANSWER VALUES (5,4,4,'D.  private static',0);
+INSERT INTO ANSWER VALUES (5,4,5,'E.  private final',0);
+INSERT INTO ANSWER VALUES (5,5,1,'A.  関係するデータとそのデータを扱う処理をひとまとめにする',0);
+INSERT INTO ANSWER VALUES (5,5,2,'B.  属性の公開範囲を制限する',1);
+INSERT INTO ANSWER VALUES (5,5,3,'C.  getterやsetterなどのアクセサメソッドを提供する',0);
+INSERT INTO ANSWER VALUES (5,5,4,'D.  実装の詳細を隠蔽する',0);
+INSERT INTO ANSWER VALUES (5,6,1,'A.  抽象化',1);
+INSERT INTO ANSWER VALUES (5,6,2,'B.  カプセル化',0);
+INSERT INTO ANSWER VALUES (5,6,3,'C.  データ隠蔽',0);
+INSERT INTO ANSWER VALUES (5,6,4,'D.  情報隠蔽',0);
+INSERT INTO ANSWER VALUES (5,7,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (5,7,2,'B.  「B」と表示される',1);
+INSERT INTO ANSWER VALUES (5,7,3,'C.  「A」「B」と表示される',0);
+INSERT INTO ANSWER VALUES (5,7,4,'D.  「B」「A」と表示される',0);
+INSERT INTO ANSWER VALUES (5,7,5,'E.  Bクラスでコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (5,7,6,'F.  Mainクラスでコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (5,7,7,'G.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (5,8,1,'A.  「Parent」と表示される',0);
+INSERT INTO ANSWER VALUES (5,8,2,'B.  「Child」と表示される',0);
+INSERT INTO ANSWER VALUES (5,8,3,'C.  Childクラスの2行目でコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (5,8,4,'D.  Mainクラスの3行目でコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (5,8,5,'E.  Mainクラスの4行目でコンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (5,8,6,'F.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (5,9,1,'A.  変更されたクラスのサブクラスに変更の影響が及ばない',0);
+INSERT INTO ANSWER VALUES (5,9,2,'B.  変更されたクラスのスーパークラスに変更の影響が及ばない',0);
+INSERT INTO ANSWER VALUES (5,9,3,'C.  変更されたクラスを使うクラスに、変更の影響が及ばない',1);
+INSERT INTO ANSWER VALUES (5,9,4,'D.  インターフェースの変更が実現クラスに及ばない',0);
+INSERT INTO ANSWER VALUES (5,10,1,'A.  公開すべきものと非公開にすべきものを区別して扱う',1);
+INSERT INTO ANSWER VALUES (5,10,2,'B.  関係するデータをひとまとめにして扱える',0);
+INSERT INTO ANSWER VALUES (5,10,3,'C.  外部からフィールドを直接操作できないようにすることができる',0);
+INSERT INTO ANSWER VALUES (5,10,4,'D.  異なる引数を受け取る同名のメソッドを複数定義できる',0);
+INSERT INTO ANSWER VALUES (5,11,1,'A.  フィールドのアクセス修飾子をprivateにする',0);
+INSERT INTO ANSWER VALUES (5,11,2,'B.  getterやsetterなどのアクセサメソッドを提供する',0);
+INSERT INTO ANSWER VALUES (5,11,3,'C.  公開メソッドを集めたインタフェースを用意する',1);
+INSERT INTO ANSWER VALUES (5,11,4,'D.  protectedで修飾したクラスを宣言する',0);
+INSERT INTO ANSWER VALUES (5,11,5,'E.  パッケージ宣言を追加する',1);
+INSERT INTO ANSWER VALUES (5,11,6,'F.  コンストラクタをprotectedにする',1);
+INSERT INTO ANSWER VALUES (5,12,1,'A.  インタフェースは型を定義するためのものである',0);
+INSERT INTO ANSWER VALUES (5,12,2,'B.  インタフェースには実装を定義できない',0);
+INSERT INTO ANSWER VALUES (5,12,3,'C.  インタフェースはインスタンス化できない',0);
+INSERT INTO ANSWER VALUES (5,12,4,'D.  インタフェースにはメソッド宣言だけが定義できる',1);
+INSERT INTO ANSWER VALUES (5,13,1,'A.  抽象化',1);
+INSERT INTO ANSWER VALUES (5,13,2,'B.  情報隠蔽',1);
+INSERT INTO ANSWER VALUES (5,13,3,'C.  データ隠蔽',0);
+INSERT INTO ANSWER VALUES (5,13,4,'D.  カプセル化',0);
+INSERT INTO ANSWER VALUES (5,14,1,'A.　public class B {<br>
+　　　　public void sample() {<br>
+　　　　　　A a = new A();<br>
+　　　　}<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (5,14,2,'B.  public class A {<br>
+　　　　public void sample() {<br>
+　　　　　　B b = new B();<br>
+　　　　}<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (5,14,3,'C.  public class B {<br>
+　　　　private A a:<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (5,14,4,'D.  public class A {<br>
+　　　　private B b:<br>
+　　}',1);
+INSERT INTO ANSWER VALUES (5,15,1,'A.  A is-a B',0);
+INSERT INTO ANSWER VALUES (5,15,2,'B.  C is-a A',1);
+INSERT INTO ANSWER VALUES (5,15,3,'C.  B is-s A',1);
+INSERT INTO ANSWER VALUES (5,15,4,'D.  D is-a B',0);
+INSERT INTO ANSWER VALUES (5,15,5,'E.  B is-a D',0);
+INSERT INTO ANSWER VALUES (5,15,6,'F.  B is-a C',0);
+INSERT INTO ANSWER VALUES (5,16,1,'A.  CdPlayerクラスでコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (5,16,2,'B.  Mp3Playerクラスでコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (5,16,3,'C.  Mainクラスでコンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (5,16,4,'D. Mainクラスの実行中に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (5,16,5,'E.  「ABA」と表示される',0);
+INSERT INTO ANSWER VALUES (5,16,6,'F.  「AB」と表示される',0);
+INSERT INTO ANSWER VALUES (5,17,1,'A.  具象クラスは、インスタンス化できない',0);
+INSERT INTO ANSWER VALUES (5,17,2,'B.  抽象クラスは、継承されることを前提としたクラスである',1);
+INSERT INTO ANSWER VALUES (5,17,3,'C.  抽象クラスは、インスタンス化できる',0);
+INSERT INTO ANSWER VALUES (5,17,4,'D.  具象クラスは、継承されることを前提としたクラスである',0);
+INSERT INTO ANSWER VALUES (6,1,1,'A.  EmployeeList',1);
+INSERT INTO ANSWER VALUES (6,1,2,'B.  $EmployeeList',1);
+INSERT INTO ANSWER VALUES (6,1,3,'C.  1EmployeeList',0);
+INSERT INTO ANSWER VALUES (6,1,4,'D.  Employee-List',0);
+INSERT INTO ANSWER VALUES (6,1,5,'E.  %EmployeeList',0);
+INSERT INTO ANSWER VALUES (6,2,1,'A.  フィールド',1);
+INSERT INTO ANSWER VALUES (6,2,2,'B.  メソッド',1);
+INSERT INTO ANSWER VALUES (6,2,3,'C.  コンストラクタ',1);
+INSERT INTO ANSWER VALUES (6,2,4,'D.  パッケージ文',0);
+INSERT INTO ANSWER VALUES (6,3,1,'A.  class ClassA(int a) {<br>
+　　　　// クラス内の定義<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,3,2,'B.  ClassA {<br>
+　　　　// クラス内の定義<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,3,3,'C.  class ClassA() {<br>
+　　　　// クラス内の定義<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,3,4,'D.  class ClassA {<br>
+　　　　// クラス内の定義<br>
+　　}',1);
+INSERT INTO ANSWER VALUES (6,4,1,'A.  ClassA classA = new ClassA;',0);
+INSERT INTO ANSWER VALUES (6,4,2,'B.  ClassA classA = new ClassA();',1);
+INSERT INTO ANSWER VALUES (6,4,3,'C.  ClassA classA = create ClassA();',0);
+INSERT INTO ANSWER VALUES (6,4,4,'D.  ClassA classA = create ClassA;',0);
+INSERT INTO ANSWER VALUES (6,5,1,'A.  コンストラクタの戻り値型はvoidにする',0);
+INSERT INTO ANSWER VALUES (6,5,2,'B.  コンストラクタには、引数を定義できない',0);
+INSERT INTO ANSWER VALUES (6,5,3,'C.  コンストラクタ名は、クラス名と同じにする',1);
+INSERT INTO ANSWER VALUES (6,5,4,'D.  コンストラクタには、戻り値型を指定できる',0);
+INSERT INTO ANSWER VALUES (6,6,1,'A.  classA.doMethod();',1);
+INSERT INTO ANSWER VALUES (6,6,2,'B.  classA+doMethod();',0);
+INSERT INTO ANSWER VALUES (6,6,3,'C.  classA doMethod();',0);
+INSERT INTO ANSWER VALUES (6,6,4,'D.  classA:doMethod();',0);
+INSERT INTO ANSWER VALUES (6,7,1,'A.  1個',1);
+INSERT INTO ANSWER VALUES (6,7,2,'B.  2個',0);
+INSERT INTO ANSWER VALUES (6,7,3,'C.  3個',0);
+INSERT INTO ANSWER VALUES (6,7,4,'4.  4個',0);
+INSERT INTO ANSWER VALUES (6,8,1,'A.  メソッド名、引数の数',0);
+INSERT INTO ANSWER VALUES (6,8,2,'B.  メソッド名、引数の型と順番',0);
+INSERT INTO ANSWER VALUES (6,8,3,'C.  メソッド名、戻り値型',0);
+INSERT INTO ANSWER VALUES (6,8,4,'D.  メソッド名のみ',1);
+INSERT INTO ANSWER VALUES (6,9,1,'A.  引数の数',1);
+INSERT INTO ANSWER VALUES (6,9,2,'B.  引数の名前',0);
+INSERT INTO ANSWER VALUES (6,9,3,'C.  アクセス修飾子',0);
+INSERT INTO ANSWER VALUES (6,9,4,'D.  引数の型',1);
+INSERT INTO ANSWER VALUES (6,9,5,'E.  メソッド名',1);
+INSERT INTO ANSWER VALUES (6,9,6,'F.  戻り値の型',0);
+INSERT INTO ANSWER VALUES (6,9,7,'G.  引数の順番',1);
+INSERT INTO ANSWER VALUES (6,10,1,'A.  String doMethod(int a) {<br>
+　　　　return "abc";<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,10,2,'B.   int doMethod() {<br>
+　　　　return 1;<br>
+　　}',1);
+INSERT INTO ANSWER VALUES (6,10,3,'C.   int doMethod(int a, int b) {<br>
+　　　　return 1;<br>
+　　}',1);
+INSERT INTO ANSWER VALUES (6,10,4,'D.   int didMethod(int a) {<br>
+　　　　return 1;<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,11,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,11,2,'B.  「doMethod-A」と表示される',0);
+INSERT INTO ANSWER VALUES (6,11,3,'C.  「doMethod-B」と表示される',1);
+INSERT INTO ANSWER VALUES (6,11,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (6,11,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,12,1,'A.  public void Account(int balance) {<br>
+　　　　this.balance = balance;<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,12,2,'B.  public Account() {<br>
+　　　　this.balance = 0;<br>
+　　}',1);
+INSERT INTO ANSWER VALUES (6,12,3,'C.  public static Account() {<br>
+　　　　this.balance = 0;<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,12,4,'D.  public Constructor(int balance) {<br>
+　　　　this.balance = balance;<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (6,13,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,13,2,'B.  「Santa Clara」と表示される',0);
+INSERT INTO ANSWER VALUES (6,13,3,'C.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (6,13,4,'D.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,14,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,14,2,'B.  「none」と表示される',0);
+INSERT INTO ANSWER VALUES (6,14,3,'C.  「James」と表示される',1);
+INSERT INTO ANSWER VALUES (6,14,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (6,14,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,15,1,'A.  自クラスのインスタンスを指し示し、メソッドの呼び出しに利用する',0);
+INSERT INTO ANSWER VALUES (6,15,2,'B.  自クラスのコンストラクタを指し示し、コンストラクタの呼び出しに利用する',1);
+INSERT INTO ANSWER VALUES (6,15,3,'C.  自クラスのインスタンスを指し示し、フィールドの参照に利用する',0);
+INSERT INTO ANSWER VALUES (6,15,4,'D.  自クラスのコンストラクタを指し示し、メソッドの呼び出しに利用する',0);
+INSERT INTO ANSWER VALUES (6,16,1,'A.  this("none", 0);',1);
+INSERT INTO ANSWER VALUES (6,16,2,'B.  Book("none", 0);',0);
+INSERT INTO ANSWER VALUES (6,16,3,'C.  this("none");',0);
+INSERT INTO ANSWER VALUES (6,16,4,'D.  Book("none");',0);
+INSERT INTO ANSWER VALUES (6,17,1,'A.  name = name;',0);
+INSERT INTO ANSWER VALUES (6,17,2,'B.  this.name = name;',1);
+INSERT INTO ANSWER VALUES (6,17,3,'C.  name = this.name;',0);
+INSERT INTO ANSWER VALUES (6,17,4,'D.  String name = name;',0);
+INSERT INTO ANSWER VALUES (6,18,1,'A.  public   ---  すべてのクラスからアクセス可能',1);
+INSERT INTO ANSWER VALUES (6,18,2,'B.  private  ---  同一パッケージ内のクラスと、サブクラスからアクセス可能',0);
+INSERT INTO ANSWER VALUES (6,18,3,'C.  public   ---  同一パッケージ内のすべてのクラスからアクセス可能',0);
+INSERT INTO ANSWER VALUES (6,18,4,'D.  private  ---  同一クラスからアクセス可能',1);
+INSERT INTO ANSWER VALUES (6,19,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,19,2,'B.  「a food」と表示される',0);
+INSERT INTO ANSWER VALUES (6,19,3,'C.  「b food」と表示される',0);
+INSERT INTO ANSWER VALUES (6,19,4,'D.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (6,19,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,20,1,'A.  void',0);
+INSERT INTO ANSWER VALUES (6,20,2,'B.  static',1);
+INSERT INTO ANSWER VALUES (6,20,3,'C.  final',0);
+INSERT INTO ANSWER VALUES (6,20,4,'D.  public',0);
+INSERT INTO ANSWER VALUES (6,21,1,'A.  ClassA.static.number',0);
+INSERT INTO ANSWER VALUES (6,21,2,'B.  ClassA.number',1);
+INSERT INTO ANSWER VALUES (6,21,3,'C.  classA.number',0);
+INSERT INTO ANSWER VALUES (6,21,4,'D.  static.ClassA.number',0);
+INSERT INTO ANSWER VALUES (6,22,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,22,2,'B.  0  が表示される',0);
+INSERT INTO ANSWER VALUES (6,22,3,'C.  1  が表示される',1);
+INSERT INTO ANSWER VALUES (6,22,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (6,22,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,23,1,'A.  public',0);
+INSERT INTO ANSWER VALUES (6,23,2,'B.  this',0);
+INSERT INTO ANSWER VALUES (6,23,3,'C.  super',0);
+INSERT INTO ANSWER VALUES (6,23,4,'D.  static',1);
+INSERT INTO ANSWER VALUES (6,24,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,24,2,'B.  「hoge」と表示される',1);
+INSERT INTO ANSWER VALUES (6,24,3,'C.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (6,24,4,'D.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,25,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (6,25,2,'B.  0が表示される',0);
+INSERT INTO ANSWER VALUES (6,25,3,'C.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (6,25,4,'D.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (6,26,1,'A.  0  が表示される',0);
+INSERT INTO ANSWER VALUES (6,26,2,'B.  1  が表示される',0);
+INSERT INTO ANSWER VALUES (6,26,3,'C.  2  が表示される',1);
+INSERT INTO ANSWER VALUES (6,26,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (6,26,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (7,1,1,'A.  public class A extends B {<br>
+　　　　// any code<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (7,1,2,'B.   public class B extends A {<br>
+　　　　// any code<br>
+　　}',1);
+INSERT INTO ANSWER VALUES (7,1,3,'C.   public class A implements B {<br>
+　　　　// any code<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (7,1,4,'D.   public class B implements A {<br>
+　　　　// any code<br>
+　　}',0);
+INSERT INTO ANSWER VALUES (7,2,1,'A.  methodAのみ',0);
+INSERT INTO ANSWER VALUES (7,2,2,'B.  methodBのみ',0);
+INSERT INTO ANSWER VALUES (7,2,3,'C.  methodCのみ',0);
+INSERT INTO ANSWER VALUES (7,2,4,'D.  methodAとmethodB',0);
+INSERT INTO ANSWER VALUES (7,2,5,'E.  methodAとmethodC',1);
+INSERT INTO ANSWER VALUES (7,2,6,'F.  methodBとmethodC',0);
+INSERT INTO ANSWER VALUES (7,2,7,'G.  どのメソッドも持たない',0);
+INSERT INTO ANSWER VALUES (7,3,1,'A.  SubClassの2行目でコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (7,3,2,'B.  Mainクラスの4行目の実行中に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (7,3,3,'C.  0が表示される',1);
+INSERT INTO ANSWER VALUES (7,3,4,'D.  10が表示される',0);
+INSERT INTO ANSWER VALUES (7,4,1,'A.  publicなメソッド',0);
+INSERT INTO ANSWER VALUES (7,4,2,'B.  privateなインスタンスフィールド',1);
+INSERT INTO ANSWER VALUES (7,4,3,'C.  コンストラクタ',1);
+INSERT INTO ANSWER VALUES (7,4,4,'D.  finalなフィールド',0);
+INSERT INTO ANSWER VALUES (7,5,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (7,5,2,'B.  「B」と表示される',0);
+INSERT INTO ANSWER VALUES (7,5,3,'C.  「A」「B」と表示される',1);
+INSERT INTO ANSWER VALUES (7,5,4,'D.  「B」「A」と表示される',0);
+INSERT INTO ANSWER VALUES (7,6,1,'A.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (7,6,2,'B.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (7,6,3,'C.  「nulltest」と表示される',0);
+INSERT INTO ANSWER VALUES (7,6,4,'D.  「test」と表示される',0);
+INSERT INTO ANSWER VALUES (7,7,1,'A.  SubClass("B");',0);
+INSERT INTO ANSWER VALUES (7,7,2,'B.  this("B");',1);
+INSERT INTO ANSWER VALUES (7,7,3,'C.  super("B");',0);
+INSERT INTO ANSWER VALUES (7,7,4,'D.  SuperClass("B");',0);
+INSERT INTO ANSWER VALUES (7,8,1,'A.  「A」と表示される',0);
+INSERT INTO ANSWER VALUES (7,8,2,'B.  「B」と表示される',0);
+INSERT INTO ANSWER VALUES (7,8,3,'C.  「A」「B」と表示される',0);
+INSERT INTO ANSWER VALUES (7,8,4,'D.  「B」「A」と表示される',0);
+INSERT INTO ANSWER VALUES (7,8,5,'E.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (7,9,1,'A.  カプセル化',0);
+INSERT INTO ANSWER VALUES (7,9,2,'B.  ポリモーフィズム',0);
+INSERT INTO ANSWER VALUES (7,9,3,'C.  オーバーロード',0);
+INSERT INTO ANSWER VALUES (7,9,4,'D.  オーバーライド',1);
+INSERT INTO ANSWER VALUES (7,10,1,'A.  public void hello() {<br>
+　　　　System.out.println("B");<br>
+　　}<br>',1);
+INSERT INTO ANSWER VALUES (7,10,2,'B.  public String hello() {<br>
+　　　　return "B";<br>
+　　}<br>',0);
+INSERT INTO ANSWER VALUES (7,10,3,'C.   public void hello(String val) {<br>
+　　　　System.out.println(val);<br>
+　　}<br>',0);
+INSERT INTO ANSWER VALUES (7,10,4,'D.  void hello() {<br>
+　　　　System.out.println("B");<br>
+　　}<br>',0);
+INSERT INTO ANSWER VALUES (7,11,1,'A.  public void hello() throws Exception {<br>
+　　　　// any code<br>
+　　}<br>',1);
+INSERT INTO ANSWER VALUES (7,11,2,'B.  public void hello() {<br>
+　　　　// any code<br>
+　　}<br>',0);
+INSERT INTO ANSWER VALUES (7,11,3,'C.  public void hello() throws NullPointerException {<br>
+　　　　// any code<br>
+　　}<br>',0);
+INSERT INTO ANSWER VALUES (7,11,4,'D.  public void hello() throws RuntimeException {<br>
+　　　　// any code<br>
+　　}<br>',0);
+INSERT INTO ANSWER VALUES (7,12,1,'A.  sample();',0);
+INSERT INTO ANSWER VALUES (7,12,2,'B.  this.sample();',0);
+INSERT INTO ANSWER VALUES (7,12,3,'C.  super.sample();',1);
+INSERT INTO ANSWER VALUES (7,12,4,'D.  SuperClass.sample();',0);
+INSERT INTO ANSWER VALUES (7,13,1,'A.  protected',0);
+INSERT INTO ANSWER VALUES (7,13,2,'B.  static',1);
+INSERT INTO ANSWER VALUES (7,13,3,'C.  final',1);
+INSERT INTO ANSWER VALUES (7,13,4,'D.  abstract',0);
+INSERT INTO ANSWER VALUES (7,13,5,'E.  public',1);
+INSERT INTO ANSWER VALUES (7,13,6,'F.  native',0);
+INSERT INTO ANSWER VALUES (7,13,7,'G. synchronized',0);
+INSERT INTO ANSWER VALUES (7,14,1,'A.  protected',0);
+INSERT INTO ANSWER VALUES (7,14,2,'B.  final',0);
+INSERT INTO ANSWER VALUES (7,14,3,'C.  abstract',1);
+INSERT INTO ANSWER VALUES (7,14,4,'D.  public',1);
+INSERT INTO ANSWER VALUES (7,14,5,'E.  native',0);
+INSERT INTO ANSWER VALUES (7,14,6,'F.  synchronized',0);
+INSERT INTO ANSWER VALUES (7,15,1,'A.  クラスは1つだけインタフェースを実現できる',0);
+INSERT INTO ANSWER VALUES (7,15,2,'B.  インタフェースは、他のインタフェースを継承できる',1);
+INSERT INTO ANSWER VALUES (7,15,3,'C.  インタフェースは、単一継承のみ可能である',0);
+INSERT INTO ANSWER VALUES (7,15,4,'D.  クラスはインタフェースを多重実現できる',1);
+INSERT INTO ANSWER VALUES (7,15,5,'E.  インタフェースには、抽象メソッドが定義できる',1);
+INSERT INTO ANSWER VALUES (7,15,6,'F.  インタフェースには、具象メソッドが定義できる',0);
+INSERT INTO ANSWER VALUES (7,16,1,'A.  すべてのメソッドは実装済みでなければならない',0);
+INSERT INTO ANSWER VALUES (7,16,2,'B.  抽象メソッドを持つことができる',1);
+INSERT INTO ANSWER VALUES (7,16,3,'C.  実現しているインタフェースのメソッドを実装する必要はない',1);
+INSERT INTO ANSWER VALUES (7,16,4,'D.  インスタンスを生成できる',0);
+INSERT INTO ANSWER VALUES (7,16,5,'E.  抽象メソッドは、暗黙的にabstractで修飾される',0);
+INSERT INTO ANSWER VALUES (7,17,1,'A.  Mainクラスの3行目でコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (7,17,2,'B.  Mainクラスの4行目でコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (7,17,3,'C.  Mainクラスの5行目でコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (7,17,4,'D.  Mainクラスの4行目で例外がスローされる',0);
+INSERT INTO ANSWER VALUES (7,17,5,'E.  Mainクラスの5行目で例外がスローされる',1);
+INSERT INTO ANSWER VALUES (7,17,6,'F.  正常に終了する',0);
+INSERT INTO ANSWER VALUES (7,18,1,'A.  名前空間を提供する',1);
+INSERT INTO ANSWER VALUES (7,18,2,'B.  パッケージ名にはドメイン名を逆にしたものを使用しなければならない',0);
+INSERT INTO ANSWER VALUES (7,18,3,'C.  アクセス制御を提供する',1);
+INSERT INTO ANSWER VALUES (7,18,4,'D.  クラスの分類を可能にする',1);
+INSERT INTO ANSWER VALUES (7,18,5,'E.  パッケージ宣言はソースファイルの1行目に記述する',0);
+INSERT INTO ANSWER VALUES (7,19,1,'A.  java.langパッケージに所属するクラスは、インポート宣言を省略できる',1);
+INSERT INTO ANSWER VALUES (7,19,2,'B.  同じパッケージに所属するクラスは、インポート宣言を省略できる',1);
+INSERT INTO ANSWER VALUES (7,19,3,'C.  異なるパッケージに所属するクラスを利用する場合には、必ずインポート宣言をしなければならない',0);
+INSERT INTO ANSWER VALUES (7,19,4,'D.  インポート宣言は、ソースファイルの先頭行から列挙しなければならない',0);
+INSERT INTO ANSWER VALUES (7,19,5,'E.  インポート宣言では、利用したいクラスが所属するパッケージ名までを指定する',0);
+INSERT INTO ANSWER VALUES (8,1,1,'A.  何も表示されない',0);
+INSERT INTO ANSWER VALUES (8,1,2,'B.  「56789」が1回表示される',1);
+INSERT INTO ANSWER VALUES (8,1,3,'C.  「56789」が5回表示される',0);
+INSERT INTO ANSWER VALUES (8,1,4,'D.  コンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (8,1,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (8,2,1,'A.  「5:5」と表示される',0);
+INSERT INTO ANSWER VALUES (8,2,2,'B.  「5:4」と表示される',0);
+INSERT INTO ANSWER VALUES (8,2,3,'C.  「5:9」と表示される',0);
+INSERT INTO ANSWER VALUES (8,2,4,'D.  「10:10」と表示される',1);
+INSERT INTO ANSWER VALUES (8,2,5,'E.  「10:9」と表示される',0);
+INSERT INTO ANSWER VALUES (8,3,1,'A.  「none aline」と表示される',0);
+INSERT INTO ANSWER VALUES (8,3,2,'B.  「null aline」と表示される',0);
+INSERT INTO ANSWER VALUES (8,3,3,'C.  「aline aline」と表示される',0);
+INSERT INTO ANSWER VALUES (8,3,4,'D.  コンパイルエラーが発生する',1);
+INSERT INTO ANSWER VALUES (8,3,5,'E.  実行時に例外がスローされる',0);
+INSERT INTO ANSWER VALUES (8,4,1,'A.  Java SE',1);
+INSERT INTO ANSWER VALUES (8,4,2,'B.  Java EE',0);
+INSERT INTO ANSWER VALUES (8,4,3,'C.  Java ME',0);
+INSERT INTO ANSWER VALUES (8,4,4,'D.  Java DB',0);
+INSERT INTO ANSWER VALUES (8,5,1,'A.  「A」「B」と表示される',1);
+INSERT INTO ANSWER VALUES (8,5,2,'B.  「B」「A」と表示される',0);
+INSERT INTO ANSWER VALUES (8,5,3,'C.  「A」「A」と表示される',0);
+INSERT INTO ANSWER VALUES (8,5,4,'D.  「B」「B」と表示される',0);
+INSERT INTO ANSWER VALUES (8,5,5,'E.  Bクラスでコンパイルエラーが発生する',0);
+INSERT INTO ANSWER VALUES (8,5,6,'F.  Mainクラスでコンパイルエラーが発生する',0);
+INSERT INTO QUIZ VALUES (6,13,'次のプログラムをコンパイル、実行したときの結果として、正しいものを選びなさい。(1つ選択)<br>
+<br>
+1.　public class Main {<br>
+2.　　　public static void main(String[] args) {<br>
+3.　　　　　Station s = new Station();<br>
+4.　　　　　s.setName("Santa Clara");<br>
+5.　　　　　s.printName();<br>
+6.　　　}<br>
+7.　}<br>
+8.<br>
+9.　class Station {<br>
+10.　　private String name;<br>
+11.<br>
+12.　　public Station(String name) {<br>
+13.　　　　this.name = name;<br>
+14.　　}<br>
+15.　　public void setName(String name) {<br>
+16.　　　　this.name = name;<br>
+17.　　}<br>
+18.　　public void printName() {<br>
+19.　　　　System.out.println(name);<br>
+20.　　}<br>
+21. }<br>',4,1);

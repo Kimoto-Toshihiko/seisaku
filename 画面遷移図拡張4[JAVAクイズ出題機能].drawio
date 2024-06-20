@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="cOPPHnaynSb4PC9Ppda5" name="ページ1">
-        <mxGraphModel dx="1489" dy="1618" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
+        <mxGraphModel dx="1403" dy="1644" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" background="none" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -10,7 +10,7 @@
                 <mxCell id="38" value="JAVAクイズ (○問目/10問)&lt;br&gt;&lt;br&gt;　NNN. XXXXXXXXXXXXXXXX&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;XXXXXXXXXXXXXXXX&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;(Nつ選択)&lt;br&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;a. XXXXXXXXXX&amp;nbsp; ○ ○✕&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;b. XXXXXXXXXX&amp;nbsp; ○ ○✕&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;c. XXXXXXXXXX&amp;nbsp; ○ ○✕&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;d. XXXXXXXXXX&amp;nbsp; ○ ○✕&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;e. XXXXXXXXXX&amp;nbsp; ○ ○✕" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="-297" y="328" width="180" height="205" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="ログイン成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ(10問)へ&lt;/u&gt;&lt;br&gt;　&lt;u&gt;トップへ&lt;/u&gt;&lt;br&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                <mxCell id="2" value="ログイン成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ&lt;/u&gt;&lt;br&gt;　&lt;u&gt;トップへ&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="-781" y="36" width="180" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="3" value="JAVAクイズ (○問目/10問)&lt;br&gt;&lt;br&gt;　NNN. XXXXXXXXXXXXXXXX&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;XXXXXXXXXXXXXXXX&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;(Nつ選択)&lt;br&gt;&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;a. XXXXXXXXXX&amp;nbsp; ○&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;b. XXXXXXXXXX&amp;nbsp; ○&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;c. XXXXXXXXXX&amp;nbsp; ○&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;d. XXXXXXXXXX&amp;nbsp; ○&lt;br&gt;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;e. XXXXXXXXXX&amp;nbsp; ○" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
@@ -152,7 +152,7 @@
                         <mxPoint x="-425" y="369" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="62" value="quizAnswers.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="62" value="quizResult.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-267" y="257" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="63" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" parent="1" source="56" target="62" edge="1">
@@ -167,7 +167,7 @@
                         <mxPoint x="-204" y="338" as="targetPoint"/>
                     </mxGeometry>
                 </mxCell>
-                <mxCell id="65" value="quizScores.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="65" value="gradeResult.jsp" style="rounded=1;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="-267" y="189" width="120" height="31" as="geometry"/>
                 </mxCell>
                 <mxCell id="66" value="" style="endArrow=classic;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="56" target="65" edge="1">

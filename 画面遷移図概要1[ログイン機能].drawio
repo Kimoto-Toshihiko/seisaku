@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="cOPPHnaynSb4PC9Ppda5" name="ページ1">
-        <mxGraphModel dx="1489" dy="449" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="1403" dy="475" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -19,7 +19,7 @@
                 <mxCell id="6" value="ログイン" style="text;html=1;strokeColor=default;fillColor=none;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">
                     <mxGeometry x="-635" y="350" width="80" height="21" as="geometry"/>
                 </mxCell>
-                <mxCell id="7" value="ログイン成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ(10問)へ&lt;br&gt;&lt;/u&gt;　&lt;u&gt;トップへ&lt;br&gt;&lt;/u&gt;&lt;u&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                <mxCell id="7" value="ログイン成功&lt;br&gt;　ようこそ{ユーザーID}さん&lt;br&gt;　&lt;u&gt;JAVAクイズ&lt;br&gt;&lt;/u&gt;　&lt;u&gt;トップへ&lt;br&gt;&lt;/u&gt;&lt;u&gt;&lt;br&gt;&lt;br&gt;&lt;/u&gt;" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="-380" y="265" width="180" height="130" as="geometry"/>
                 </mxCell>
                 <mxCell id="8" value="" style="endArrow=classic;html=1;exitX=0.5;exitY=0;exitDx=0;exitDy=0;entryX=1;entryY=0.5;entryDx=0;entryDy=0;" parent="1" source="7" target="2" edge="1">
@@ -27,7 +27,7 @@
                         <mxPoint x="-503" y="240" as="sourcePoint"/>
                         <mxPoint x="-453" y="190" as="targetPoint"/>
                         <Array as="points">
-                            <mxPoint x="-293" y="105"/>
+                            <mxPoint x="-290" y="105"/>
                         </Array>
                     </mxGeometry>
                 </mxCell>
